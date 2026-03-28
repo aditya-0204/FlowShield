@@ -1,9 +1,15 @@
+#pragma once
+
 #include <string>
+
 using namespace std;
+
 namespace FlowShield {
-    const int HEARTBEAT_INTERVAL = 5;      // Seconds between each "Image Drop"
-    const string CLIENT_INBOX = "../storage_system/node_client/";
-    const string RELAY_1_PATH = "../storage_system/node_relay_1/";
-    const string RELAY_2_PATH = "../storage_system/node_relay_2/";
-    const string COVER_IMAGE_POOL = "./assets/covers/"; // Folder full of Cats/Dogs
+    inline constexpr int HEARTBEAT_INTERVAL_MS = 1500;
+    inline const string DEFAULT_MESSAGE = "Hi Aditya";
+    inline const string CLIENT_INBOX = "../Storage_system/node_client/";
+    inline const string RELAY_1_PATH = "../Storage_system/node_relay_1/";
+    inline const string RELAY_2_PATH = "../Storage_system/node_relay_2/";
+    inline const string TRAFFIC_LOG_PATH = "../Storage_system/traffic_log.jsonl";
+    inline const string COVER_IMAGE_POOL = "./assets/covers/";
 }

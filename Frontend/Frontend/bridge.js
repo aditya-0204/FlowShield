@@ -176,6 +176,7 @@ function readLatestReceiverOutput(options = {}) {
   return {
     fileName: files[0].name,
     filePath: files[0].path,
+    mtimeMs: files[0].mtimeMs,
     plaintext: fs.readFileSync(files[0].path, 'utf8'),
   }
 }

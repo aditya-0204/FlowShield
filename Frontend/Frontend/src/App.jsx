@@ -122,6 +122,7 @@ function App() {
   const [receiverChaffState, setReceiverChaffState] = useState(null)
   const [sessionInfo, setSessionInfo] = useState(null)
   const [status, setStatus] = useState('Bridge idle. Waiting for a payload or the next heartbeat.')
+  const [lastBridgeSyncAt, setLastBridgeSyncAt] = useState(null)
   const [isSending, setIsSending] = useState(false)
   const [visibleStepCount, setVisibleStepCount] = useState(() => (lastQueuedMessage ? 1 : 0))
   const [visibleLayerCount, setVisibleLayerCount] = useState(0)
@@ -171,10 +172,19 @@ function App() {
           setReceiverMessageState(receiverData.latestMessage || null)
           setReceiverChaffState(receiverData.latestChaff || null)
           setSessionInfo(sessionData.session || null)
+          setLastBridgeSyncAt(new Date().toLocaleTimeString())
         })
+
+        if (active) {
+          setStatus('Bridge connected. Receiver polling is live every 1.5s.')
+        }
       } catch (error) {
         if (active) {
-          setStatus(error.message)
+          setStatus((current) =>
+            receiverState || receiverMessageState || receiverChaffState
+              ? `${current.startsWith('Bridge connected') ? current : 'Bridge connected. Showing last synced receiver data.'}`
+              : error.message,
+          )
         }
       }
     }
@@ -252,6 +262,31 @@ function App() {
   const senderPipelineFinished = targetStepState.receiver.active && visibleStepCount >= pipelineStages.length
   const hasActiveRealSession = Boolean(sessionInfo?.message)
   const receiverCanRevealMessage = hasActiveRealSession ? Boolean(sessionInfo?.revealReady) : true
+  const latestRealMessage = receiverMessageState?.plaintext || 'No real payload has been received yet.'
+  const latestRealFile = receiverMessageState?.fileName || ''
+  const latestChaffMessage = receiverChaffState?.plaintext || 'No chaff heartbeat visible yet.'
+  const latestChaffFile = receiverChaffState?.fileName || ''
+  const receiverHasCurrentPayload =
+    Boolean(receiverMessageState?.mtimeMs) && Boolean(sessionInfo?.queuedAt) && receiverMessageState.mtimeMs >= sessionInfo.queuedAt
+  const heartbeatBoxTitle = hasActiveRealSession && !receiverCanRevealMessage ? 'Incoming Payload Transit' : 'Latest Chaff Heartbeat'
+  const heartbeatBoxMessage =
+    hasActiveRealSession && !receiverCanRevealMessage
+      ? receiverHasCurrentPayload
+        ? receiverMessageState?.plaintext || 'Receiver has not decrypted the active payload yet.'
+        : 'Receiver has not decrypted the active payload yet.'
+      : latestChaffMessage
+  const heartbeatBoxMeta =
+    hasActiveRealSession && !receiverCanRevealMessage
+      ? receiverHasCurrentPayload
+        ? receiverMessageState?.fileName
+          ? `Incoming receiver file: ${receiverMessageState.fileName}`
+          : 'Payload is being held here until synchronized delivery.'
+        : sessionInfo?.fileName
+          ? `Queued sender file: ${sessionInfo.fileName}`
+          : 'Payload is being held here until synchronized delivery.'
+      : latestChaffFile
+        ? `Latest chaff file: ${latestChaffFile}`
+        : 'Chaff will appear here while the sender is idle.'
 
   useEffect(() => {
     if (completedStepCount <= visibleStepCount) {
@@ -299,32 +334,30 @@ function App() {
 
           <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="rounded-3xl border border-white/10 bg-slate-950/75 p-6">
-              <p className="font-mono text-xs uppercase tracking-[0.3em] text-slate-400">Recovered Plaintext</p>
+              <p className="font-mono text-xs uppercase tracking-[0.3em] text-slate-400">Latest Received Message</p>
               <div className="mt-5 rounded-2xl border border-emerald-400/25 bg-emerald-400/8 p-5">
                 <p className="break-all font-mono text-3xl leading-10 text-emerald-100">
                   {receiverCanRevealMessage
-                    ? receiverMessageState?.plaintext || receiverState?.plaintext || 'Waiting for sender traffic...'
-                    : 'Payload received. Awaiting synchronized reveal...'}
+                    ? latestRealMessage
+                    : 'Waiting for synchronized delivery...'}
                 </p>
               </div>
               <p className="mt-4 font-mono text-xs text-slate-400">
                 {receiverCanRevealMessage
-                  ? receiverMessageState?.fileName
-                    ? `Latest receiver file: ${receiverMessageState.fileName}`
-                    : receiverState?.fileName
-                      ? `Latest receiver file: ${receiverState.fileName}`
-                      : 'No receiver output file yet.'
+                  ? latestRealFile
+                    ? `Latest receiver file: ${latestRealFile}`
+                    : 'No real-message receiver file yet.'
                   : sessionInfo?.fileName
                     ? `Queued sender file: ${sessionInfo.fileName}`
                     : 'No receiver output file yet.'}
               </p>
               <div className="mt-5 rounded-2xl border border-amber-400/20 bg-amber-400/6 p-4">
-                <p className="font-mono text-xs uppercase tracking-[0.24em] text-amber-200/70">Latest Chaff Heartbeat</p>
+                <p className="font-mono text-xs uppercase tracking-[0.24em] text-amber-200/70">{heartbeatBoxTitle}</p>
                 <p className="mt-3 break-all font-mono text-lg leading-8 text-amber-100">
-                  {receiverChaffState?.plaintext || 'No chaff heartbeat visible yet.'}
+                  {heartbeatBoxMessage}
                 </p>
                 <p className="mt-3 font-mono text-xs text-slate-400">
-                  {receiverChaffState?.fileName ? `Latest chaff file: ${receiverChaffState.fileName}` : 'Chaff will appear here while the sender is idle.'}
+                  {heartbeatBoxMeta}
                 </p>
               </div>
             </div>
@@ -338,17 +371,18 @@ function App() {
                     {receiverMessageState && receiverCanRevealMessage
                       ? 'Payload decrypted successfully.'
                       : hasActiveRealSession && !receiverCanRevealMessage
-                        ? 'Payload received. Awaiting synchronized reveal.'
-                        : receiverState
-                          ? receiverState.plaintext?.includes('[chaff]')
-                            ? 'Chaff heartbeat visible. Waiting for a real payload.'
-                            : 'Payload decrypted successfully.'
+                        ? 'Payload in transit. It will move into the received-message panel after synchronized delivery.'
+                        : receiverChaffState
+                          ? 'Chaff heartbeat visible. Waiting for a real payload.'
                           : 'Idle. Waiting for a remote stego image.'}
                   </p>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-4">
                   <p className="font-mono text-xs uppercase tracking-[0.24em] text-slate-500">Bridge Status</p>
                   <p className="mt-3 font-mono text-sm leading-7 text-slate-200">{status}</p>
+                  <p className="mt-3 font-mono text-xs text-slate-500">
+                    {lastBridgeSyncAt ? `Last successful sync: ${lastBridgeSyncAt}` : 'Waiting for first successful bridge sync.'}
+                  </p>
                 </div>
               </div>
             </div>

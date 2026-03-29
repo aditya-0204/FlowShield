@@ -1,6 +1,6 @@
 import { startTransition, useDeferredValue, useEffect, useState } from 'react'
 
-const API_BASE = 'http://localhost:5050/api'
+const API_BASE = `${window.location.protocol}//${window.location.hostname}:5050/api`
 
 const stageStyles = {
   message: 'border-cyan-500/40 bg-cyan-500/10 text-cyan-100',
@@ -113,9 +113,14 @@ function getCompletedStepCount(stepState) {
 }
 
 function App() {
+  const [viewMode, setViewMode] = useState('sender')
   const [message, setMessage] = useState('Hi Aditya')
   const [lastQueuedMessage, setLastQueuedMessage] = useState(() => window.localStorage.getItem('flowshield-last-message') || '')
   const [logs, setLogs] = useState([])
+  const [receiverState, setReceiverState] = useState(null)
+  const [receiverMessageState, setReceiverMessageState] = useState(null)
+  const [receiverChaffState, setReceiverChaffState] = useState(null)
+  const [sessionInfo, setSessionInfo] = useState(null)
   const [status, setStatus] = useState('Bridge idle. Waiting for a payload or the next heartbeat.')
   const [isSending, setIsSending] = useState(false)
   const [visibleStepCount, setVisibleStepCount] = useState(() => (lastQueuedMessage ? 1 : 0))
@@ -135,18 +140,37 @@ function App() {
 
     const loadTraffic = async () => {
       try {
-        const response = await fetch(`${API_BASE}/traffic`)
-        if (!response.ok) {
-          throw new Error(`Traffic log request failed: ${response.status}`)
+        const [trafficResponse, receiverResponse, sessionResponse] = await Promise.all([
+          fetch(`${API_BASE}/traffic`),
+          fetch(`${API_BASE}/receiver/latest`),
+          fetch(`${API_BASE}/session`),
+        ])
+
+        if (!trafficResponse.ok) {
+          throw new Error(`Traffic log request failed: ${trafficResponse.status}`)
         }
 
-        const data = await response.json()
+        if (!receiverResponse.ok) {
+          throw new Error(`Receiver state request failed: ${receiverResponse.status}`)
+        }
+
+        if (!sessionResponse.ok) {
+          throw new Error(`Session request failed: ${sessionResponse.status}`)
+        }
+
+        const data = await trafficResponse.json()
+        const receiverData = await receiverResponse.json()
+        const sessionData = await sessionResponse.json()
         if (!active) {
           return
         }
 
         startTransition(() => {
           setLogs(Array.isArray(data.events) ? data.events : [])
+          setReceiverState(receiverData.latest || null)
+          setReceiverMessageState(receiverData.latestMessage || null)
+          setReceiverChaffState(receiverData.latestChaff || null)
+          setSessionInfo(sessionData.session || null)
         })
       } catch (error) {
         if (active) {
@@ -225,6 +249,9 @@ function App() {
     ]),
   )
   const receiverEntry = [...recentMessageEvents].reverse().find((entry) => entry.stage === 'Receiver' && entry.file?.endsWith('.txt'))
+  const senderPipelineFinished = targetStepState.receiver.active && visibleStepCount >= pipelineStages.length
+  const hasActiveRealSession = Boolean(sessionInfo?.message)
+  const receiverCanRevealMessage = hasActiveRealSession ? Boolean(sessionInfo?.revealReady) : true
 
   useEffect(() => {
     if (completedStepCount <= visibleStepCount) {
@@ -250,6 +277,121 @@ function App() {
     return () => window.clearTimeout(timeoutId)
   }, [completedLayerCount, stepState.crypto.active, visibleLayerCount])
 
+  if (viewMode === 'receiver') {
+    return (
+      <main className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.16),transparent_35%),linear-gradient(180deg,#071120_0%,#02060d_100%)] px-4 py-6 text-slate-100 sm:px-6 lg:px-10">
+        <div className="mx-auto flex max-w-6xl flex-col gap-6">
+          <section className="rounded-3xl border border-white/10 bg-slate-950/75 p-6 shadow-[0_0_70px_rgba(16,185,129,0.1)]">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="text-xs uppercase tracking-[0.35em] text-emerald-300/70">FlowShield Receiver</p>
+                <h1 className="mt-2 font-mono text-3xl font-semibold text-white sm:text-4xl">Receiver Console</h1>
+              </div>
+              <button
+                type="button"
+                onClick={() => setViewMode('sender')}
+                className="rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs text-slate-200 transition hover:bg-white/10"
+              >
+                Switch To Sender
+              </button>
+            </div>
+          </section>
+
+          <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="rounded-3xl border border-white/10 bg-slate-950/75 p-6">
+              <p className="font-mono text-xs uppercase tracking-[0.3em] text-slate-400">Recovered Plaintext</p>
+              <div className="mt-5 rounded-2xl border border-emerald-400/25 bg-emerald-400/8 p-5">
+                <p className="break-all font-mono text-3xl leading-10 text-emerald-100">
+                  {receiverCanRevealMessage
+                    ? receiverMessageState?.plaintext || receiverState?.plaintext || 'Waiting for sender traffic...'
+                    : 'Payload received. Awaiting synchronized reveal...'}
+                </p>
+              </div>
+              <p className="mt-4 font-mono text-xs text-slate-400">
+                {receiverCanRevealMessage
+                  ? receiverMessageState?.fileName
+                    ? `Latest receiver file: ${receiverMessageState.fileName}`
+                    : receiverState?.fileName
+                      ? `Latest receiver file: ${receiverState.fileName}`
+                      : 'No receiver output file yet.'
+                  : sessionInfo?.fileName
+                    ? `Queued sender file: ${sessionInfo.fileName}`
+                    : 'No receiver output file yet.'}
+              </p>
+              <div className="mt-5 rounded-2xl border border-amber-400/20 bg-amber-400/6 p-4">
+                <p className="font-mono text-xs uppercase tracking-[0.24em] text-amber-200/70">Latest Chaff Heartbeat</p>
+                <p className="mt-3 break-all font-mono text-lg leading-8 text-amber-100">
+                  {receiverChaffState?.plaintext || 'No chaff heartbeat visible yet.'}
+                </p>
+                <p className="mt-3 font-mono text-xs text-slate-400">
+                  {receiverChaffState?.fileName ? `Latest chaff file: ${receiverChaffState.fileName}` : 'Chaff will appear here while the sender is idle.'}
+                </p>
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-white/10 bg-slate-950/75 p-6">
+              <p className="font-mono text-xs uppercase tracking-[0.3em] text-slate-400">Receiver Status</p>
+              <div className="mt-5 grid gap-4">
+                <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-4">
+                  <p className="font-mono text-xs uppercase tracking-[0.24em] text-slate-500">State</p>
+                  <p className="mt-3 font-mono text-lg text-white">
+                    {receiverMessageState && receiverCanRevealMessage
+                      ? 'Payload decrypted successfully.'
+                      : hasActiveRealSession && !receiverCanRevealMessage
+                        ? 'Payload received. Awaiting synchronized reveal.'
+                        : receiverState
+                          ? receiverState.plaintext?.includes('[chaff]')
+                            ? 'Chaff heartbeat visible. Waiting for a real payload.'
+                            : 'Payload decrypted successfully.'
+                          : 'Idle. Waiting for a remote stego image.'}
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-4">
+                  <p className="font-mono text-xs uppercase tracking-[0.24em] text-slate-500">Bridge Status</p>
+                  <p className="mt-3 font-mono text-sm leading-7 text-slate-200">{status}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="rounded-3xl border border-white/10 bg-slate-950/75 p-6">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.35em] text-slate-400">Receiver Event Stream</p>
+                <h2 className="mt-2 font-mono text-2xl text-white">Recent decrypted-route events</h2>
+              </div>
+              <div className="font-mono text-xs text-slate-500">Any device can open this view.</div>
+            </div>
+            <div className="mt-6 grid max-h-[34rem] gap-3 overflow-y-auto pr-1">
+              {deferredLogs.length === 0 ? (
+                <div className="rounded-2xl border border-dashed border-white/10 bg-slate-900/40 px-4 py-6 font-mono text-sm text-slate-500">
+                  No events yet. Start the bridge and backend, then dispatch a payload.
+                </div>
+              ) : (
+                deferredLogs
+                  .slice()
+                  .reverse()
+                  .filter((entry) => entry.stage === 'Receiver' || entry.stage === 'Relay 2' || entry.stage === 'Stego')
+                  .map((entry, index) => (
+                    <article
+                      key={`${entry.timestamp}-${entry.stage}-${index}`}
+                      className={`rounded-2xl border px-4 py-4 font-mono text-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] ${stageStyles[entry.type] || 'border-white/10 bg-slate-900/50 text-slate-100'}`}
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-3">
+                        <div className="text-xs uppercase tracking-[0.28em] text-white/60">{entry.stage}</div>
+                        <div className="text-xs text-white/50">{entry.timestamp}</div>
+                      </div>
+                      <p className="mt-3 leading-6">{entry.detail}</p>
+                    </article>
+                  ))
+              )}
+            </div>
+          </section>
+        </div>
+      </main>
+    )
+  }
+
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.16),transparent_40%),linear-gradient(180deg,#08111f_0%,#02060d_100%)] px-4 py-6 text-slate-100 sm:px-6 lg:px-10">
       <div className="mx-auto flex max-w-7xl flex-col gap-6">
@@ -260,8 +402,17 @@ function App() {
                 <p className="text-xs uppercase tracking-[0.35em] text-cyan-300/70">FlowShield Terminal</p>
                 <h1 className="mt-2 font-mono text-3xl font-semibold text-white sm:text-4xl">Asynchronous Steganographic Onion Router</h1>
               </div>
-              <div className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 font-mono text-xs text-emerald-200">
-                HEARTBEAT 1.5s / TFC ACTIVE
+              <div className="flex gap-3">
+                <button
+                  type="button"
+                  onClick={() => setViewMode('receiver')}
+                  className="rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs text-slate-200 transition hover:bg-white/10"
+                >
+                  Open Receiver View
+                </button>
+                <div className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 font-mono text-xs text-emerald-200">
+                  HEARTBEAT 1.5s / TFC ACTIVE
+                </div>
               </div>
             </div>
           </div>

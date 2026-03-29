@@ -1,0 +1,11 @@
+# FlowShield runtime artifacts
+Storage_system/node_client/*.txt
+Storage_system/node_relay_1/*.png
+Storage_system/node_relay_2/*.png
+Storage_system/node_receiver/*.txt
+Storage_system/remote_receiver_inbox/*.png
+Storage_system/traffic_log.jsonl
+
+# Backend build outputs
+Backend/flowshield.exe
+Backend/*.exe

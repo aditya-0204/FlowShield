@@ -16,167 +16,7 @@
 using namespace std;
 namespace fs = std::filesystem;
 
-class FileWatcher {
-public:
-    explicit FileWatcher(string path) : watchPath(std::move(path)), rng(random_device{}()) {}
-
-    void startMonitoring() {
-        ensureDirectories();
-        cout << "[FlowShield] Monitoring " << watchPath << " with a " << FlowShield::HEARTBEAT_INTERVAL_MS << "ms TFC heartbeat." << endl;
-
-        while (true) {
-            try {
-                heartbeat();
-            } catch (const exception& ex) {
-                logEvent("error", "Watcher", ex.what(), "");
-                cerr << "[FlowShield] " << ex.what() << endl;
-            }
-
-            this_thread::sleep_for(chrono::milliseconds(FlowShield::HEARTBEAT_INTERVAL_MS));
-        }
-    }
-
-private:
-    string watchPath;
-    mt19937 rng;
-
-    void heartbeat() {
-        fs::path pending = nextMessageFile();
-        if (!pending.empty()) {
-            string content = readMessage(pending.string());
-            logEvent("message", "Watcher", "Detected frontend payload file " + pending.filename().string(), pending.string());
-            processMessage(content, pending.filename().string());
-            fs::remove(pending);
-            return;
-        }
-
-        generateChaff();
-    }
-
-    fs::path nextMessageFile() {
-        vector<fs::directory_entry> txtFiles;
-
-        for (const auto& entry : fs::directory_iterator(watchPath)) {
-            if (entry.is_regular_file() && entry.path().extension() == ".txt") {
-                txtFiles.push_back(entry);
-            }
-        }
-
-        if (txtFiles.empty()) {
-            return {};
-        }
-
-        sort(txtFiles.begin(), txtFiles.end(), [](const fs::directory_entry& left, const fs::directory_entry& right) {
-            return fs::last_write_time(left.path()) < fs::last_write_time(right.path());
-        });
-
-        return txtFiles.front().path();
-    }
-
-    string readMessage(const string& filePath) {
-        ifstream file(filePath);
-        return string((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
-    }
-
-    void processMessage(const string& msg, const string& sourceName) {
-        string payload = msg.empty() ? FlowShield::DEFAULT_MESSAGE : msg;
-        vector<string> trace;
-        vector<unsigned char> onion = CryptoEngine::encryptThreeLayerOnion(payload, trace);
-
-        logEvent("message", "Crypto", "Wrapped payload \"" + payload + "\" in 3 AES-256-GCM onion layers.", sourceName);
-        for (size_t i = 0; i < trace.size(); ++i) {
-            logEvent("message", "Layer " + to_string(i + 1), trace[i], sourceName);
-        }
-
-        routePayload(onion, "morphed", "Encrypted onion hidden inside relay covers.");
-
-        logEvent("message", "Relay 1", "Relay 1 receives a morphed PNG and peels the outer routing instruction.", "");
-        logEvent("message", "Relay 2", "Relay 2 forwards the still-encrypted core while traffic volume stays constant.", "");
-        logEvent("message", "Client", "Traffic Flow Confidentiality maintained with a constant 1.5s image cadence.", "");
-    }
-
-    void generateChaff() {
-        vector<string> trace;
-        vector<unsigned char> onion = CryptoEngine::encryptThreeLayerOnion(FlowShield::DEFAULT_MESSAGE + " [chaff]", trace);
-
-        logEvent("chaff", "Heartbeat", "No user payload found. Emitting dummy relay traffic.", "");
-        routePayload(onion, "chaff", "Dummy PNGs emitted to preserve traffic flow confidentiality.");
-    }
-
-    void routePayload(const vector<unsigned char>& onion, const string& prefix, const string& detail) {
-        string stamp = timestampForFile();
-        fs::path cover1 = pickCoverImage();
-        fs::path cover2 = pickCoverImage(cover1.filename().string());
-
-        fs::path relay1Output = fs::path(FlowShield::RELAY_1_PATH) / (prefix + "_relay1_" + stamp + ".png");
-        fs::path relay2Output = fs::path(FlowShield::RELAY_2_PATH) / (prefix + "_relay2_" + stamp + ".png");
-
-        bool relay1Ok = StegoEngine::hideOnion(cover1.string(), relay1Output.string(), onion, true);
-        bool relay2Ok = StegoEngine::hideOnion(cover2.string(), relay2Output.string(), onion, true);
-
-        logEvent(relay1Ok ? prefix : "error", "Stego", detail, relay1Output.string());
-        logEvent(relay2Ok ? prefix : "error", "Stego", "Second relay image morphed for downstream forwarding.", relay2Output.string());
-
-        if (relay2Ok) {
-            receivePayload(relay2Output, prefix, stamp);
-        }
-    }
-
-    fs::path pickCoverImage(const string& avoid = "") {
-        vector<fs::path> images;
-
-        for (const auto& entry : fs::directory_iterator(FlowShield::COVER_IMAGE_POOL)) {
-            if (entry.is_regular_file() && entry.path().extension() == ".png") {
-                if (avoid.empty() || entry.path().filename().string() != avoid) {
-                    images.push_back(entry.path());
-                }
-            }
-        }
-
-        if (images.empty() && !avoid.empty()) {
-            for (const auto& entry : fs::directory_iterator(FlowShield::COVER_IMAGE_POOL)) {
-                if (entry.is_regular_file() && entry.path().extension() == ".png") {
-                    images.push_back(entry.path());
-                }
-            }
-        }
-
-        if (images.empty()) {
-            throw runtime_error("No PNG cover images found in " + FlowShield::COVER_IMAGE_POOL);
-        }
-
-        uniform_int_distribution<size_t> dist(0, images.size() - 1);
-        return images[dist(rng)];
-    }
-
-    void ensureDirectories() {
-        fs::create_directories(watchPath);
-        fs::create_directories(FlowShield::RELAY_1_PATH);
-        fs::create_directories(FlowShield::RELAY_2_PATH);
-        fs::create_directories(FlowShield::RECEIVER_PATH);
-        ofstream touchLog(FlowShield::TRAFFIC_LOG_PATH, ios::app);
-        touchLog.close();
-    }
-
-    void receivePayload(const fs::path& relayImage, const string& prefix, const string& stamp) {
-        vector<unsigned char> extracted = StegoEngine::extractOnion(relayImage.string());
-        logEvent(prefix == "chaff" ? "chaff" : "message", "Receiver", "Receiver extracted the embedded onion payload from the relay PNG.", relayImage.string());
-
-        vector<string> trace;
-        string plaintext = CryptoEngine::decryptThreeLayerOnion(extracted, trace);
-
-        for (const string& step : trace) {
-            logEvent(prefix == "chaff" ? "chaff" : "message", "Receiver", step, relayImage.string());
-        }
-
-        fs::path outputFile = fs::path(FlowShield::RECEIVER_PATH) / (prefix + "_received_" + stamp + ".txt");
-        ofstream out(outputFile);
-        out << plaintext;
-        out.close();
-
-        logEvent(prefix == "chaff" ? "chaff" : "message", "Receiver", "Recovered plaintext written for the receiving node.", outputFile.string());
-    }
-
+namespace {
     string timestampForFile() {
         auto now = chrono::system_clock::now();
         time_t nowTime = chrono::system_clock::to_time_t(now);
@@ -223,7 +63,8 @@ private:
         return escaped;
     }
 
-    void logEvent(const string& type, const string& stage, const string& detail, const string& file) {
+    void appendTrafficLog(const string& type, const string& stage, const string& detail, const string& file) {
+        fs::create_directories(fs::path(FlowShield::TRAFFIC_LOG_PATH).parent_path());
         ofstream logFile(FlowShield::TRAFFIC_LOG_PATH, ios::app);
         logFile << "{\"timestamp\":\"" << escapeJson(timestampForLog())
                 << "\",\"type\":\"" << escapeJson(type)
@@ -231,5 +72,183 @@ private:
                 << "\",\"detail\":\"" << escapeJson(detail)
                 << "\",\"file\":\"" << escapeJson(file)
                 << "\"}\n";
+    }
+}
+
+class ReceiverProcessor {
+public:
+    static fs::path processRelayImage(const fs::path& relayImage, const string& prefix = "", const string& stamp = "") {
+        fs::create_directories(FlowShield::RECEIVER_PATH);
+
+        string resolvedPrefix = prefix.empty() ? inferPrefix(relayImage) : prefix;
+        string resolvedStamp = stamp.empty() ? timestampForFile() : stamp;
+        string logType = resolvedPrefix == "chaff" ? "chaff" : "message";
+
+        vector<unsigned char> extracted = StegoEngine::extractOnion(relayImage.string());
+        appendTrafficLog(logType, "Receiver", "Receiver extracted the embedded onion payload from the relay PNG.", relayImage.string());
+
+        vector<string> trace;
+        string plaintext = CryptoEngine::decryptThreeLayerOnion(extracted, trace);
+
+        for (const string& step : trace) {
+            appendTrafficLog(logType, "Receiver", step, relayImage.string());
+        }
+
+        fs::path outputFile = fs::path(FlowShield::RECEIVER_PATH) / (resolvedPrefix + "_received_" + resolvedStamp + ".txt");
+        ofstream out(outputFile);
+        out << plaintext;
+        out.close();
+
+        appendTrafficLog(logType, "Receiver", "Recovered plaintext written for the receiving node.", outputFile.string());
+        return outputFile;
+    }
+
+private:
+    static string inferPrefix(const fs::path& relayImage) {
+        string fileName = relayImage.filename().string();
+        return fileName.find("chaff") != string::npos ? "chaff" : "morphed";
+    }
+};
+
+class FileWatcher {
+public:
+    explicit FileWatcher(string path) : watchPath(std::move(path)), rng(random_device{}()) {}
+
+    void startMonitoring() {
+        ensureDirectories();
+        cout << "[FlowShield] Monitoring " << watchPath << " with a " << FlowShield::HEARTBEAT_INTERVAL_MS << "ms TFC heartbeat." << endl;
+
+        while (true) {
+            try {
+                heartbeat();
+            } catch (const exception& ex) {
+                appendTrafficLog("error", "Watcher", ex.what(), "");
+                cerr << "[FlowShield] " << ex.what() << endl;
+            }
+
+            this_thread::sleep_for(chrono::milliseconds(FlowShield::HEARTBEAT_INTERVAL_MS));
+        }
+    }
+
+private:
+    string watchPath;
+    mt19937 rng;
+
+    void heartbeat() {
+        fs::path pending = nextMessageFile();
+        if (!pending.empty()) {
+            string content = readMessage(pending.string());
+            appendTrafficLog("message", "Watcher", "Detected frontend payload file " + pending.filename().string(), pending.string());
+            processMessage(content, pending.filename().string());
+            fs::remove(pending);
+            return;
+        }
+
+        generateChaff();
+    }
+
+    fs::path nextMessageFile() {
+        vector<fs::directory_entry> txtFiles;
+
+        for (const auto& entry : fs::directory_iterator(watchPath)) {
+            if (entry.is_regular_file() && entry.path().extension() == ".txt") {
+                txtFiles.push_back(entry);
+            }
+        }
+
+        if (txtFiles.empty()) {
+            return {};
+        }
+
+        sort(txtFiles.begin(), txtFiles.end(), [](const fs::directory_entry& left, const fs::directory_entry& right) {
+            return fs::last_write_time(left.path()) < fs::last_write_time(right.path());
+        });
+
+        return txtFiles.front().path();
+    }
+
+    string readMessage(const string& filePath) {
+        ifstream file(filePath);
+        return string((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
+    }
+
+    void processMessage(const string& msg, const string& sourceName) {
+        string payload = msg.empty() ? FlowShield::DEFAULT_MESSAGE : msg;
+        vector<string> trace;
+        vector<unsigned char> onion = CryptoEngine::encryptThreeLayerOnion(payload, trace);
+
+        appendTrafficLog("message", "Crypto", "Wrapped payload \"" + payload + "\" in 3 AES-256-GCM onion layers.", sourceName);
+        for (size_t i = 0; i < trace.size(); ++i) {
+            appendTrafficLog("message", "Layer " + to_string(i + 1), trace[i], sourceName);
+        }
+
+        routePayload(onion, "morphed", "Encrypted onion hidden inside relay covers.");
+
+        appendTrafficLog("message", "Relay 1", "Relay 1 receives a morphed PNG and peels the outer routing instruction.", "");
+        appendTrafficLog("message", "Relay 2", "Relay 2 forwards the still-encrypted core while traffic volume stays constant.", "");
+        appendTrafficLog("message", "Client", "Traffic Flow Confidentiality maintained with a constant 1.5s image cadence.", "");
+    }
+
+    void generateChaff() {
+        vector<string> trace;
+        vector<unsigned char> onion = CryptoEngine::encryptThreeLayerOnion(FlowShield::DEFAULT_MESSAGE + " [chaff]", trace);
+
+        appendTrafficLog("chaff", "Heartbeat", "No user payload found. Emitting dummy relay traffic.", "");
+        routePayload(onion, "chaff", "Dummy PNGs emitted to preserve traffic flow confidentiality.");
+    }
+
+    void routePayload(const vector<unsigned char>& onion, const string& prefix, const string& detail) {
+        string stamp = timestampForFile();
+        fs::path cover1 = pickCoverImage();
+        fs::path cover2 = pickCoverImage(cover1.filename().string());
+
+        fs::path relay1Output = fs::path(FlowShield::RELAY_1_PATH) / (prefix + "_relay1_" + stamp + ".png");
+        fs::path relay2Output = fs::path(FlowShield::RELAY_2_PATH) / (prefix + "_relay2_" + stamp + ".png");
+
+        bool relay1Ok = StegoEngine::hideOnion(cover1.string(), relay1Output.string(), onion, true);
+        bool relay2Ok = StegoEngine::hideOnion(cover2.string(), relay2Output.string(), onion, true);
+
+        appendTrafficLog(relay1Ok ? prefix : "error", "Stego", detail, relay1Output.string());
+        appendTrafficLog(relay2Ok ? prefix : "error", "Stego", "Second relay image morphed for downstream forwarding.", relay2Output.string());
+
+        if (relay2Ok) {
+            ReceiverProcessor::processRelayImage(relay2Output, prefix, stamp);
+        }
+    }
+
+    fs::path pickCoverImage(const string& avoid = "") {
+        vector<fs::path> images;
+
+        for (const auto& entry : fs::directory_iterator(FlowShield::COVER_IMAGE_POOL)) {
+            if (entry.is_regular_file() && entry.path().extension() == ".png") {
+                if (avoid.empty() || entry.path().filename().string() != avoid) {
+                    images.push_back(entry.path());
+                }
+            }
+        }
+
+        if (images.empty() && !avoid.empty()) {
+            for (const auto& entry : fs::directory_iterator(FlowShield::COVER_IMAGE_POOL)) {
+                if (entry.is_regular_file() && entry.path().extension() == ".png") {
+                    images.push_back(entry.path());
+                }
+            }
+        }
+
+        if (images.empty()) {
+            throw runtime_error("No PNG cover images found in " + FlowShield::COVER_IMAGE_POOL);
+        }
+
+        uniform_int_distribution<size_t> dist(0, images.size() - 1);
+        return images[dist(rng)];
+    }
+
+    void ensureDirectories() {
+        fs::create_directories(watchPath);
+        fs::create_directories(FlowShield::RELAY_1_PATH);
+        fs::create_directories(FlowShield::RELAY_2_PATH);
+        fs::create_directories(FlowShield::RECEIVER_PATH);
+        ofstream touchLog(FlowShield::TRAFFIC_LOG_PATH, ios::app);
+        touchLog.close();
     }
 };

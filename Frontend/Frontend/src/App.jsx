@@ -18,6 +18,10 @@ const pipelineStages = [
   { key: 'receiver', label: 'Receiver', description: 'Receiver extracts, peels, and recovers plaintext.' },
 ]
 
+const STEP_REVEAL_DELAY_MS = 1400
+const LAYER_REVEAL_DELAY_MS = 1100
+const onionLayerLabels = ['Layer 1', 'Layer 2', 'Layer 3']
+
 function getEntryText(entry) {
   return `${entry.stage ?? ''} ${entry.detail ?? ''} ${entry.file ?? ''}`.toLowerCase()
 }
@@ -26,7 +30,7 @@ function buildStepState(entries, queuedMessage) {
   const state = {
     sender: { active: Boolean(queuedMessage), detail: queuedMessage ? `Plaintext queued: "${queuedMessage}"` : 'Waiting for a user payload.' },
     bridge: { active: false, detail: 'No payload file has been staged yet.' },
-    crypto: { active: false, detail: 'Encryption has not started yet.' },
+    crypto: { active: false, detail: 'Encryption has not started yet.', layers: [] },
     relay1: { active: false, detail: 'No relay-1 PNG has been written yet.' },
     relay2: { active: false, detail: 'No relay-2 PNG has been written yet.' },
     receiver: { active: false, detail: 'Receiver has not recovered plaintext yet.' },
@@ -46,6 +50,12 @@ function buildStepState(entries, queuedMessage) {
       state.crypto = {
         active: true,
         detail: entry.detail,
+        layers: entry.stage?.startsWith('Layer ')
+          ? [
+              ...state.crypto.layers.filter((layer) => layer.stage !== entry.stage),
+              { stage: entry.stage, detail: entry.detail },
+            ].sort((left, right) => left.stage.localeCompare(right.stage))
+          : state.crypto.layers,
       }
     }
 
@@ -96,13 +106,29 @@ function outputFileName(entry) {
   return extractFileName(entry.file)
 }
 
+function getCompletedStepCount(stepState) {
+  return pipelineStages.findIndex((step) => !stepState[step.key]?.active) === -1
+    ? pipelineStages.length
+    : pipelineStages.findIndex((step) => !stepState[step.key]?.active)
+}
+
 function App() {
   const [message, setMessage] = useState('Hi Aditya')
   const [lastQueuedMessage, setLastQueuedMessage] = useState(() => window.localStorage.getItem('flowshield-last-message') || '')
   const [logs, setLogs] = useState([])
   const [status, setStatus] = useState('Bridge idle. Waiting for a payload or the next heartbeat.')
   const [isSending, setIsSending] = useState(false)
+  const [visibleStepCount, setVisibleStepCount] = useState(() => (lastQueuedMessage ? 1 : 0))
+  const [visibleLayerCount, setVisibleLayerCount] = useState(0)
   const deferredLogs = useDeferredValue(logs)
+
+  function resetVisualization() {
+    setLastQueuedMessage('')
+    window.localStorage.removeItem('flowshield-last-message')
+    setVisibleStepCount(0)
+    setVisibleLayerCount(0)
+    setStatus('Visualization reset. Send another message to replay the full route.')
+  }
 
   useEffect(() => {
     let active = true
@@ -166,6 +192,8 @@ function App() {
       setStatus(`Queued ${data.fileName}. The backend watcher will pick it up on the next 1.5s heartbeat.`)
       setLastQueuedMessage(trimmed)
       window.localStorage.setItem('flowshield-last-message', trimmed)
+      setVisibleStepCount(1)
+      setVisibleLayerCount(0)
       setMessage('')
     } catch (error) {
       setStatus(error.message)
@@ -179,8 +207,48 @@ function App() {
   const recentMessageEvents = deferredLogs
     .filter((entry) => entry.type === 'message' || entry.type === 'morphed')
     .slice(-16)
-  const stepState = buildStepState(recentMessageEvents, lastQueuedMessage)
+  const targetStepState = buildStepState(recentMessageEvents, lastQueuedMessage)
+  const rawCompletedStepCount = getCompletedStepCount(targetStepState)
+  const completedLayerCount = Math.min(targetStepState.crypto.layers?.length ?? 0, onionLayerLabels.length)
+  const completedStepCount =
+    targetStepState.crypto.active && visibleLayerCount < completedLayerCount
+      ? Math.min(rawCompletedStepCount, 3)
+      : rawCompletedStepCount
+  const stepState = Object.fromEntries(
+    pipelineStages.map((step, index) => [
+      step.key,
+      {
+        ...targetStepState[step.key],
+        active: index < visibleStepCount && Boolean(targetStepState[step.key]?.active),
+        pending: index >= visibleStepCount && Boolean(targetStepState[step.key]?.active),
+      },
+    ]),
+  )
   const receiverEntry = [...recentMessageEvents].reverse().find((entry) => entry.stage === 'Receiver' && entry.file?.endsWith('.txt'))
+
+  useEffect(() => {
+    if (completedStepCount <= visibleStepCount) {
+      return undefined
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setVisibleStepCount((current) => Math.min(current + 1, completedStepCount))
+    }, STEP_REVEAL_DELAY_MS)
+
+    return () => window.clearTimeout(timeoutId)
+  }, [completedStepCount, visibleStepCount])
+
+  useEffect(() => {
+    if (!stepState.crypto.active || completedLayerCount <= visibleLayerCount) {
+      return undefined
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setVisibleLayerCount((current) => Math.min(current + 1, completedLayerCount))
+    }, LAYER_REVEAL_DELAY_MS)
+
+    return () => window.clearTimeout(timeoutId)
+  }, [completedLayerCount, stepState.crypto.active, visibleLayerCount])
 
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.16),transparent_40%),linear-gradient(180deg,#08111f_0%,#02060d_100%)] px-4 py-6 text-slate-100 sm:px-6 lg:px-10">
@@ -224,6 +292,13 @@ function App() {
                   <div className="font-mono text-xs text-slate-400">
                     Frontend -&gt; bridge.js -&gt; Storage_system/node_client -&gt; C++ watcher
                   </div>
+                  <button
+                    type="button"
+                    onClick={resetVisualization}
+                    className="rounded-full border border-white/15 bg-white/5 px-5 py-2.5 font-mono text-sm text-slate-200 transition hover:bg-white/10"
+                  >
+                    Send Another Message
+                  </button>
                 </div>
               </form>
             </section>
@@ -273,30 +348,92 @@ function App() {
             {pipelineStages.map((step, index) => {
               const stepInfo = stepState[step.key]
               const active = Boolean(stepInfo?.active)
+              const pending = Boolean(stepInfo?.pending)
+              const completed = targetStepState.receiver.active && step.key === 'receiver' && active
 
               return (
                 <div
                   key={step.key}
                   className={`relative rounded-2xl border p-4 transition ${
-                    active
-                      ? 'border-cyan-400/50 bg-cyan-400/10 shadow-[0_0_30px_rgba(34,211,238,0.12)]'
+                    completed
+                      ? 'border-emerald-400/60 bg-emerald-400/12 shadow-[0_0_36px_rgba(52,211,153,0.16)]'
+                      : active
+                        ? 'border-cyan-400/50 bg-cyan-400/10 shadow-[0_0_30px_rgba(34,211,238,0.12)]'
+                        : pending
+                          ? 'border-cyan-400/25 bg-cyan-400/5'
                       : 'border-white/10 bg-slate-900/50'
                   }`}
                 >
                   {index < pipelineStages.length - 1 ? (
-                    <div className="absolute -right-3 top-1/2 hidden h-px w-6 -translate-y-1/2 bg-gradient-to-r from-cyan-400/60 to-transparent lg:block" />
+                    <div
+                      className={`absolute -right-3 top-1/2 hidden h-px w-6 -translate-y-1/2 lg:block ${
+                        active || completed ? 'bg-gradient-to-r from-cyan-400/60 to-transparent' : 'bg-gradient-to-r from-slate-700 to-transparent'
+                      }`}
+                    />
                   ) : null}
                   <div className="flex items-center justify-between gap-2">
-                    <span className={`font-mono text-[11px] uppercase tracking-[0.28em] ${active ? 'text-cyan-200' : 'text-slate-500'}`}>
+                    <span className={`font-mono text-[11px] uppercase tracking-[0.28em] ${
+                      completed ? 'text-emerald-200' : active ? 'text-cyan-200' : pending ? 'text-cyan-300/70' : 'text-slate-500'
+                    }`}>
                       Step {index + 1}
                     </span>
-                    <span className={`h-2.5 w-2.5 rounded-full ${active ? 'bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.75)]' : 'bg-slate-700'}`} />
+                    <span
+                      className={`h-2.5 w-2.5 rounded-full ${
+                        completed
+                          ? 'bg-emerald-300 shadow-[0_0_14px_rgba(110,231,183,0.8)]'
+                          : active
+                            ? 'bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.75)]'
+                            : pending
+                              ? 'bg-cyan-300/60'
+                              : 'bg-slate-700'
+                      }`}
+                    />
                   </div>
                   <h3 className="mt-3 font-mono text-lg text-white">{step.label}</h3>
                   <p className="mt-2 text-sm leading-6 text-slate-300">{step.description}</p>
-                  <p className={`mt-3 font-mono text-xs leading-5 ${active ? 'text-cyan-100' : 'text-slate-500'}`}>
+                  <p className={`mt-3 font-mono text-xs leading-5 ${
+                    completed ? 'text-emerald-100' : active ? 'text-cyan-100' : pending ? 'text-cyan-100/80' : 'text-slate-500'
+                  }`}>
                     {stepInfo?.detail}
                   </p>
+                  {step.key === 'crypto' ? (
+                    <div className="mt-4 grid gap-2">
+                      {onionLayerLabels.map((label, layerIndex) => {
+                        const layerEntry = targetStepState.crypto.layers?.[layerIndex]
+                        const layerVisible = active && visibleLayerCount > layerIndex && Boolean(layerEntry)
+                        const layerPending = active && !layerVisible && Boolean(layerEntry)
+
+                        return (
+                          <div
+                            key={label}
+                            className={`rounded-xl border px-3 py-2 transition ${
+                              layerVisible
+                                ? 'border-cyan-400/40 bg-cyan-400/10'
+                                : layerPending
+                                  ? 'border-cyan-400/20 bg-cyan-400/5'
+                                  : 'border-white/8 bg-slate-950/40'
+                            }`}
+                          >
+                            <div className="flex items-center justify-between gap-2">
+                              <span className={`font-mono text-[11px] uppercase tracking-[0.24em] ${
+                                layerVisible ? 'text-cyan-200' : layerPending ? 'text-cyan-300/70' : 'text-slate-500'
+                              }`}>
+                                {label}
+                              </span>
+                              <span className={`h-2 w-2 rounded-full ${
+                                layerVisible ? 'bg-cyan-300 shadow-[0_0_10px_rgba(103,232,249,0.8)]' : layerPending ? 'bg-cyan-300/60' : 'bg-slate-700'
+                              }`} />
+                            </div>
+                            <p className={`mt-2 font-mono text-[11px] leading-5 ${
+                              layerVisible ? 'text-cyan-100' : layerPending ? 'text-cyan-100/75' : 'text-slate-500'
+                            }`}>
+                              {layerEntry?.detail || 'Waiting for this encryption layer...'}
+                            </p>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  ) : null}
                 </div>
               )
             })}

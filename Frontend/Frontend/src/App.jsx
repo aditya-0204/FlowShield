@@ -262,32 +262,42 @@ function App() {
   const receiverEntry = [...recentMessageEvents].reverse().find((entry) => entry.stage === 'Receiver' && entry.file?.endsWith('.txt'))
   const senderPipelineFinished = targetStepState.receiver.active && visibleStepCount >= pipelineStages.length
   const hasActiveRealSession = Boolean(sessionInfo?.message)
-  const receiverCanRevealMessage = hasActiveRealSession ? Boolean(sessionInfo?.revealReady) : true
-  const latestRealMessage = deliveredMessage?.plaintext || 'No real payload has been received yet.'
-  const latestRealFile = deliveredMessage?.fileName || ''
+  const receiverCanRevealMessage = hasActiveRealSession ? Boolean(sessionInfo?.revealReady) && senderPipelineFinished : true
+  const guardedReceiverMsg = receiverCanRevealMessage ? receiverMessageState : null
+  const currentSessionMessage =
+    guardedReceiverMsg?.mtimeMs &&
+    sessionInfo?.queuedAt &&
+    guardedReceiverMsg.mtimeMs >= sessionInfo.queuedAt
+      ? guardedReceiverMsg
+      : null
+  const sessionComplete = hasActiveRealSession && receiverCanRevealMessage && Boolean(deliveredMessage)
+  const showDeliveredNow = !hasActiveRealSession || receiverCanRevealMessage
+  const latestRealMessage = showDeliveredNow ? deliveredMessage?.plaintext || 'No real payload has been received yet.' : 'Awaiting synchronized reveal...'
+  const latestRealFile = showDeliveredNow ? deliveredMessage?.fileName || '' : sessionInfo?.fileName || ''
   const latestChaffMessage = receiverChaffState?.plaintext || 'No chaff heartbeat visible yet.'
   const latestChaffFile = receiverChaffState?.fileName || ''
-  const receiverHasCurrentPayload =
-    Boolean(receiverMessageState?.mtimeMs) && Boolean(sessionInfo?.queuedAt) && receiverMessageState.mtimeMs >= sessionInfo.queuedAt
-  const heartbeatBoxTitle = hasActiveRealSession && !receiverCanRevealMessage ? 'Incoming Payload Transit' : 'Latest Chaff Heartbeat'
+  const heartbeatBoxTitle =
+    hasActiveRealSession && !receiverCanRevealMessage
+      ? 'Incoming Payload Transit'
+      : 'Latest Chaff Heartbeat'
   const heartbeatBoxMessage =
     hasActiveRealSession && !receiverCanRevealMessage
-      ? receiverHasCurrentPayload
-        ? receiverMessageState?.plaintext || 'Receiver is decrypting the active payload...'
-        : 'Receiver is waiting to decrypt the active payload...'
-      : latestChaffMessage
+      ? 'Awaiting synchronized reveal...'
+      : sessionComplete
+        ? latestChaffMessage
+        : latestChaffMessage
   const heartbeatBoxMeta =
     hasActiveRealSession && !receiverCanRevealMessage
-      ? receiverHasCurrentPayload
-        ? receiverMessageState?.fileName
-          ? `Incoming receiver file: ${receiverMessageState.fileName}`
-          : 'Payload is being held here until synchronized delivery.'
-        : sessionInfo?.fileName
-          ? `Queued sender file: ${sessionInfo.fileName}`
-          : 'Payload is being held here until synchronized delivery.'
-      : latestChaffFile
-        ? `Latest chaff file: ${latestChaffFile}`
-        : 'Chaff will appear here while the sender is idle.'
+      ? sessionInfo?.fileName
+        ? `Queued sender file: ${sessionInfo.fileName}`
+        : 'Payload is being held here until synchronized delivery.'
+      : sessionComplete
+        ? latestChaffFile
+          ? `Latest chaff file: ${latestChaffFile}`
+          : 'Chaff will appear here while the sender is idle.'
+        : latestChaffFile
+          ? `Latest chaff file: ${latestChaffFile}`
+          : 'Chaff will appear here while the sender is idle.'
 
   useEffect(() => {
     if (completedStepCount <= visibleStepCount) {
@@ -318,10 +328,17 @@ function App() {
     if (!receiverCanRevealMessage) {
       return
     }
-    if (receiverMessageState?.plaintext && receiverMessageState?.fileName) {
-      setDeliveredMessage(receiverMessageState)
+    if (currentSessionMessage?.plaintext && currentSessionMessage?.fileName) {
+      setDeliveredMessage(currentSessionMessage)
     }
-  }, [receiverCanRevealMessage, receiverMessageState])
+  }, [receiverCanRevealMessage, currentSessionMessage])
+
+  // Clear delivered slot when a new session starts and reveal is not ready yet.
+  useEffect(() => {
+    if (hasActiveRealSession && !receiverCanRevealMessage) {
+      setDeliveredMessage(null)
+    }
+  }, [hasActiveRealSession, receiverCanRevealMessage])
 
   if (viewMode === 'receiver') {
     return (

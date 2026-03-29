@@ -1794,3 +1794,455 @@
 {"timestamp":"2026-03-29 23:05:55","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_230554_471.png"}
 {"timestamp":"2026-03-29 23:05:55","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_230554_471.png"}
 {"timestamp":"2026-03-29 23:05:55","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260329_230554_471.txt"}
+{"timestamp":"2026-03-29 23:53:30","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-29 23:53:30","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260329_235330_192.png"}
+{"timestamp":"2026-03-29 23:53:30","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235330_192.png"}
+{"timestamp":"2026-03-29 23:53:31","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235330_192.png"}
+{"timestamp":"2026-03-29 23:53:31","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235330_192.png"}
+{"timestamp":"2026-03-29 23:53:31","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235330_192.png"}
+{"timestamp":"2026-03-29 23:53:31","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235330_192.png"}
+{"timestamp":"2026-03-29 23:53:31","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260329_235330_192.txt"}
+{"timestamp":"2026-03-29 23:53:32","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-29 23:53:40","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260329_235332_540.png"}
+{"timestamp":"2026-03-29 23:53:40","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235332_540.png"}
+{"timestamp":"2026-03-29 23:53:40","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235332_540.png"}
+{"timestamp":"2026-03-29 23:53:40","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235332_540.png"}
+{"timestamp":"2026-03-29 23:53:40","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235332_540.png"}
+{"timestamp":"2026-03-29 23:53:40","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235332_540.png"}
+{"timestamp":"2026-03-29 23:53:40","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260329_235332_540.txt"}
+{"timestamp":"2026-03-29 23:53:41","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-29 23:53:47","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260329_235341_945.png"}
+{"timestamp":"2026-03-29 23:53:47","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235341_945.png"}
+{"timestamp":"2026-03-29 23:53:47","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235341_945.png"}
+{"timestamp":"2026-03-29 23:53:47","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235341_945.png"}
+{"timestamp":"2026-03-29 23:53:47","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235341_945.png"}
+{"timestamp":"2026-03-29 23:53:47","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235341_945.png"}
+{"timestamp":"2026-03-29 23:53:47","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260329_235341_945.txt"}
+{"timestamp":"2026-03-29 23:53:49","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-29 23:53:51","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260329_235349_326.png"}
+{"timestamp":"2026-03-29 23:53:51","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235349_326.png"}
+{"timestamp":"2026-03-29 23:53:52","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235349_326.png"}
+{"timestamp":"2026-03-29 23:53:52","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235349_326.png"}
+{"timestamp":"2026-03-29 23:53:52","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235349_326.png"}
+{"timestamp":"2026-03-29 23:53:52","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235349_326.png"}
+{"timestamp":"2026-03-29 23:53:52","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260329_235349_326.txt"}
+{"timestamp":"2026-03-29 23:53:53","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-29 23:53:56","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260329_235353_653.png"}
+{"timestamp":"2026-03-29 23:53:56","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235353_653.png"}
+{"timestamp":"2026-03-29 23:53:56","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235353_653.png"}
+{"timestamp":"2026-03-29 23:53:56","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235353_653.png"}
+{"timestamp":"2026-03-29 23:53:56","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235353_653.png"}
+{"timestamp":"2026-03-29 23:53:56","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235353_653.png"}
+{"timestamp":"2026-03-29 23:53:56","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260329_235353_653.txt"}
+{"timestamp":"2026-03-29 23:53:58","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-29 23:53:59","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260329_235358_068.png"}
+{"timestamp":"2026-03-29 23:53:59","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235358_068.png"}
+{"timestamp":"2026-03-29 23:53:59","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235358_068.png"}
+{"timestamp":"2026-03-29 23:53:59","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235358_068.png"}
+{"timestamp":"2026-03-29 23:53:59","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235358_068.png"}
+{"timestamp":"2026-03-29 23:53:59","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235358_068.png"}
+{"timestamp":"2026-03-29 23:53:59","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260329_235358_068.txt"}
+{"timestamp":"2026-03-29 23:54:00","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-29 23:54:02","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260329_235400_923.png"}
+{"timestamp":"2026-03-29 23:54:02","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235400_923.png"}
+{"timestamp":"2026-03-29 23:54:02","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235400_923.png"}
+{"timestamp":"2026-03-29 23:54:02","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235400_923.png"}
+{"timestamp":"2026-03-29 23:54:02","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235400_923.png"}
+{"timestamp":"2026-03-29 23:54:02","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235400_923.png"}
+{"timestamp":"2026-03-29 23:54:02","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260329_235400_923.txt"}
+{"timestamp":"2026-03-29 23:54:03","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-29 23:54:05","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260329_235403_710.png"}
+{"timestamp":"2026-03-29 23:54:05","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235403_710.png"}
+{"timestamp":"2026-03-29 23:54:05","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235403_710.png"}
+{"timestamp":"2026-03-29 23:54:05","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235403_710.png"}
+{"timestamp":"2026-03-29 23:54:05","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235403_710.png"}
+{"timestamp":"2026-03-29 23:54:05","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235403_710.png"}
+{"timestamp":"2026-03-29 23:54:05","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260329_235403_710.txt"}
+{"timestamp":"2026-03-29 23:54:06","type":"message","stage":"Watcher","detail":"Detected frontend payload file payload_1774808643902.txt","file":"../Storage_system/node_client/payload_1774808643902.txt"}
+{"timestamp":"2026-03-29 23:54:06","type":"message","stage":"Crypto","detail":"Wrapped payload \"hi hi hi\" in 3 AES-256-GCM onion layers.","file":"payload_1774808643902.txt"}
+{"timestamp":"2026-03-29 23:54:06","type":"message","stage":"Layer 1","detail":"Relay 3 outer shell sealed","file":"payload_1774808643902.txt"}
+{"timestamp":"2026-03-29 23:54:06","type":"message","stage":"Layer 2","detail":"Relay 2 middle shell sealed","file":"payload_1774808643902.txt"}
+{"timestamp":"2026-03-29 23:54:06","type":"message","stage":"Layer 3","detail":"Relay 1 inner shell sealed","file":"payload_1774808643902.txt"}
+{"timestamp":"2026-03-29 23:54:14","type":"morphed","stage":"Stego","detail":"Encrypted onion hidden inside relay covers.","file":"../Storage_system/node_relay_1/morphed_relay1_20260329_235406_759.png"}
+{"timestamp":"2026-03-29 23:54:14","type":"morphed","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/morphed_relay2_20260329_235406_759.png"}
+{"timestamp":"2026-03-29 23:54:14","type":"message","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/morphed_relay2_20260329_235406_759.png"}
+{"timestamp":"2026-03-29 23:54:14","type":"message","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/morphed_relay2_20260329_235406_759.png"}
+{"timestamp":"2026-03-29 23:54:14","type":"message","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/morphed_relay2_20260329_235406_759.png"}
+{"timestamp":"2026-03-29 23:54:14","type":"message","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/morphed_relay2_20260329_235406_759.png"}
+{"timestamp":"2026-03-29 23:54:14","type":"message","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/morphed_received_20260329_235406_759.txt"}
+{"timestamp":"2026-03-29 23:54:14","type":"message","stage":"Relay 1","detail":"Relay 1 receives a morphed PNG and peels the outer routing instruction.","file":""}
+{"timestamp":"2026-03-29 23:54:14","type":"message","stage":"Relay 2","detail":"Relay 2 forwards the still-encrypted core while traffic volume stays constant.","file":""}
+{"timestamp":"2026-03-29 23:54:14","type":"message","stage":"Client","detail":"Traffic Flow Confidentiality maintained with a constant 1.5s image cadence.","file":""}
+{"timestamp":"2026-03-29 23:54:15","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-29 23:54:23","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260329_235415_737.png"}
+{"timestamp":"2026-03-29 23:54:23","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235415_737.png"}
+{"timestamp":"2026-03-29 23:54:23","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235415_737.png"}
+{"timestamp":"2026-03-29 23:54:23","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235415_737.png"}
+{"timestamp":"2026-03-29 23:54:23","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235415_737.png"}
+{"timestamp":"2026-03-29 23:54:23","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235415_737.png"}
+{"timestamp":"2026-03-29 23:54:23","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260329_235415_737.txt"}
+{"timestamp":"2026-03-29 23:54:25","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-29 23:54:31","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260329_235425_230.png"}
+{"timestamp":"2026-03-29 23:54:31","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235425_230.png"}
+{"timestamp":"2026-03-29 23:54:31","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235425_230.png"}
+{"timestamp":"2026-03-29 23:54:31","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235425_230.png"}
+{"timestamp":"2026-03-29 23:54:31","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235425_230.png"}
+{"timestamp":"2026-03-29 23:54:31","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235425_230.png"}
+{"timestamp":"2026-03-29 23:54:31","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260329_235425_230.txt"}
+{"timestamp":"2026-03-29 23:54:33","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-29 23:54:34","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260329_235433_271.png"}
+{"timestamp":"2026-03-29 23:54:34","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235433_271.png"}
+{"timestamp":"2026-03-29 23:54:34","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235433_271.png"}
+{"timestamp":"2026-03-29 23:54:34","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235433_271.png"}
+{"timestamp":"2026-03-29 23:54:34","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235433_271.png"}
+{"timestamp":"2026-03-29 23:54:34","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235433_271.png"}
+{"timestamp":"2026-03-29 23:54:34","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260329_235433_271.txt"}
+{"timestamp":"2026-03-29 23:54:35","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-29 23:54:43","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260329_235435_956.png"}
+{"timestamp":"2026-03-29 23:54:43","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235435_956.png"}
+{"timestamp":"2026-03-29 23:54:44","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235435_956.png"}
+{"timestamp":"2026-03-29 23:54:44","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235435_956.png"}
+{"timestamp":"2026-03-29 23:54:44","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235435_956.png"}
+{"timestamp":"2026-03-29 23:54:44","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260329_235435_956.png"}
+{"timestamp":"2026-03-29 23:54:44","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260329_235435_956.txt"}
+{"timestamp":"2026-03-30 00:00:13","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:00:19","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000013_647.png"}
+{"timestamp":"2026-03-30 00:00:19","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000013_647.png"}
+{"timestamp":"2026-03-30 00:00:20","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000013_647.png"}
+{"timestamp":"2026-03-30 00:00:20","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000013_647.png"}
+{"timestamp":"2026-03-30 00:00:20","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000013_647.png"}
+{"timestamp":"2026-03-30 00:00:20","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000013_647.png"}
+{"timestamp":"2026-03-30 00:00:20","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000013_647.txt"}
+{"timestamp":"2026-03-30 00:00:21","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:00:29","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000021_679.png"}
+{"timestamp":"2026-03-30 00:00:29","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000021_679.png"}
+{"timestamp":"2026-03-30 00:00:29","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000021_679.png"}
+{"timestamp":"2026-03-30 00:00:29","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000021_679.png"}
+{"timestamp":"2026-03-30 00:00:29","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000021_679.png"}
+{"timestamp":"2026-03-30 00:00:29","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000021_679.png"}
+{"timestamp":"2026-03-30 00:00:29","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000021_679.txt"}
+{"timestamp":"2026-03-30 00:00:31","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:00:39","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000031_089.png"}
+{"timestamp":"2026-03-30 00:00:39","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000031_089.png"}
+{"timestamp":"2026-03-30 00:00:39","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000031_089.png"}
+{"timestamp":"2026-03-30 00:00:39","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000031_089.png"}
+{"timestamp":"2026-03-30 00:00:39","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000031_089.png"}
+{"timestamp":"2026-03-30 00:00:39","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000031_089.png"}
+{"timestamp":"2026-03-30 00:00:39","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000031_089.txt"}
+{"timestamp":"2026-03-30 00:00:40","type":"message","stage":"Watcher","detail":"Detected frontend payload file payload_1774809032054.txt","file":"../Storage_system/node_client/payload_1774809032054.txt"}
+{"timestamp":"2026-03-30 00:00:40","type":"message","stage":"Crypto","detail":"Wrapped payload \"mid air help\" in 3 AES-256-GCM onion layers.","file":"payload_1774809032054.txt"}
+{"timestamp":"2026-03-30 00:00:40","type":"message","stage":"Layer 1","detail":"Relay 3 outer shell sealed","file":"payload_1774809032054.txt"}
+{"timestamp":"2026-03-30 00:00:40","type":"message","stage":"Layer 2","detail":"Relay 2 middle shell sealed","file":"payload_1774809032054.txt"}
+{"timestamp":"2026-03-30 00:00:40","type":"message","stage":"Layer 3","detail":"Relay 1 inner shell sealed","file":"payload_1774809032054.txt"}
+{"timestamp":"2026-03-30 00:00:48","type":"morphed","stage":"Stego","detail":"Encrypted onion hidden inside relay covers.","file":"../Storage_system/node_relay_1/morphed_relay1_20260330_000040_905.png"}
+{"timestamp":"2026-03-30 00:00:48","type":"morphed","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000040_905.png"}
+{"timestamp":"2026-03-30 00:00:48","type":"message","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000040_905.png"}
+{"timestamp":"2026-03-30 00:00:48","type":"message","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000040_905.png"}
+{"timestamp":"2026-03-30 00:00:48","type":"message","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000040_905.png"}
+{"timestamp":"2026-03-30 00:00:48","type":"message","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000040_905.png"}
+{"timestamp":"2026-03-30 00:00:48","type":"message","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/morphed_received_20260330_000040_905.txt"}
+{"timestamp":"2026-03-30 00:00:48","type":"message","stage":"Relay 1","detail":"Relay 1 receives a morphed PNG and peels the outer routing instruction.","file":""}
+{"timestamp":"2026-03-30 00:00:48","type":"message","stage":"Relay 2","detail":"Relay 2 forwards the still-encrypted core while traffic volume stays constant.","file":""}
+{"timestamp":"2026-03-30 00:00:48","type":"message","stage":"Client","detail":"Traffic Flow Confidentiality maintained with a constant 1.5s image cadence.","file":""}
+{"timestamp":"2026-03-30 00:00:50","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:00:51","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000050_067.png"}
+{"timestamp":"2026-03-30 00:00:51","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000050_067.png"}
+{"timestamp":"2026-03-30 00:00:51","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000050_067.png"}
+{"timestamp":"2026-03-30 00:00:51","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000050_067.png"}
+{"timestamp":"2026-03-30 00:00:51","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000050_067.png"}
+{"timestamp":"2026-03-30 00:00:51","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000050_067.png"}
+{"timestamp":"2026-03-30 00:00:51","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000050_067.txt"}
+{"timestamp":"2026-03-30 00:00:52","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:00:54","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000052_720.png"}
+{"timestamp":"2026-03-30 00:00:54","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000052_720.png"}
+{"timestamp":"2026-03-30 00:00:54","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000052_720.png"}
+{"timestamp":"2026-03-30 00:00:54","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000052_720.png"}
+{"timestamp":"2026-03-30 00:00:54","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000052_720.png"}
+{"timestamp":"2026-03-30 00:00:54","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000052_720.png"}
+{"timestamp":"2026-03-30 00:00:54","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000052_720.txt"}
+{"timestamp":"2026-03-30 00:00:55","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:00:58","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000055_691.png"}
+{"timestamp":"2026-03-30 00:00:58","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000055_691.png"}
+{"timestamp":"2026-03-30 00:00:58","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000055_691.png"}
+{"timestamp":"2026-03-30 00:00:58","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000055_691.png"}
+{"timestamp":"2026-03-30 00:00:58","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000055_691.png"}
+{"timestamp":"2026-03-30 00:00:58","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000055_691.png"}
+{"timestamp":"2026-03-30 00:00:58","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000055_691.txt"}
+{"timestamp":"2026-03-30 00:00:59","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:01:05","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000059_689.png"}
+{"timestamp":"2026-03-30 00:01:05","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000059_689.png"}
+{"timestamp":"2026-03-30 00:01:06","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000059_689.png"}
+{"timestamp":"2026-03-30 00:01:06","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000059_689.png"}
+{"timestamp":"2026-03-30 00:01:06","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000059_689.png"}
+{"timestamp":"2026-03-30 00:01:06","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000059_689.png"}
+{"timestamp":"2026-03-30 00:01:06","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000059_689.txt"}
+{"timestamp":"2026-03-30 00:01:07","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:01:13","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000107_905.png"}
+{"timestamp":"2026-03-30 00:01:13","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000107_905.png"}
+{"timestamp":"2026-03-30 00:01:13","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000107_905.png"}
+{"timestamp":"2026-03-30 00:01:13","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000107_905.png"}
+{"timestamp":"2026-03-30 00:01:13","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000107_905.png"}
+{"timestamp":"2026-03-30 00:01:13","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000107_905.png"}
+{"timestamp":"2026-03-30 00:01:13","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000107_905.txt"}
+{"timestamp":"2026-03-30 00:01:15","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:01:23","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000115_422.png"}
+{"timestamp":"2026-03-30 00:01:23","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000115_422.png"}
+{"timestamp":"2026-03-30 00:01:23","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000115_422.png"}
+{"timestamp":"2026-03-30 00:01:23","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000115_422.png"}
+{"timestamp":"2026-03-30 00:01:23","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000115_422.png"}
+{"timestamp":"2026-03-30 00:01:23","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000115_422.png"}
+{"timestamp":"2026-03-30 00:01:23","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000115_422.txt"}
+{"timestamp":"2026-03-30 00:01:24","type":"message","stage":"Watcher","detail":"Detected frontend payload file payload_1774809075587.txt","file":"../Storage_system/node_client/payload_1774809075587.txt"}
+{"timestamp":"2026-03-30 00:01:24","type":"message","stage":"Crypto","detail":"Wrapped payload \"alpha to delta\" in 3 AES-256-GCM onion layers.","file":"payload_1774809075587.txt"}
+{"timestamp":"2026-03-30 00:01:24","type":"message","stage":"Layer 1","detail":"Relay 3 outer shell sealed","file":"payload_1774809075587.txt"}
+{"timestamp":"2026-03-30 00:01:24","type":"message","stage":"Layer 2","detail":"Relay 2 middle shell sealed","file":"payload_1774809075587.txt"}
+{"timestamp":"2026-03-30 00:01:24","type":"message","stage":"Layer 3","detail":"Relay 1 inner shell sealed","file":"payload_1774809075587.txt"}
+{"timestamp":"2026-03-30 00:01:26","type":"morphed","stage":"Stego","detail":"Encrypted onion hidden inside relay covers.","file":"../Storage_system/node_relay_1/morphed_relay1_20260330_000124_898.png"}
+{"timestamp":"2026-03-30 00:01:26","type":"morphed","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000124_898.png"}
+{"timestamp":"2026-03-30 00:01:26","type":"message","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000124_898.png"}
+{"timestamp":"2026-03-30 00:01:26","type":"message","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000124_898.png"}
+{"timestamp":"2026-03-30 00:01:26","type":"message","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000124_898.png"}
+{"timestamp":"2026-03-30 00:01:26","type":"message","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000124_898.png"}
+{"timestamp":"2026-03-30 00:01:26","type":"message","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/morphed_received_20260330_000124_898.txt"}
+{"timestamp":"2026-03-30 00:01:26","type":"message","stage":"Relay 1","detail":"Relay 1 receives a morphed PNG and peels the outer routing instruction.","file":""}
+{"timestamp":"2026-03-30 00:01:26","type":"message","stage":"Relay 2","detail":"Relay 2 forwards the still-encrypted core while traffic volume stays constant.","file":""}
+{"timestamp":"2026-03-30 00:01:26","type":"message","stage":"Client","detail":"Traffic Flow Confidentiality maintained with a constant 1.5s image cadence.","file":""}
+{"timestamp":"2026-03-30 00:01:27","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:01:28","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000127_800.png"}
+{"timestamp":"2026-03-30 00:01:28","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000127_800.png"}
+{"timestamp":"2026-03-30 00:01:28","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000127_800.png"}
+{"timestamp":"2026-03-30 00:01:28","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000127_800.png"}
+{"timestamp":"2026-03-30 00:01:28","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000127_800.png"}
+{"timestamp":"2026-03-30 00:01:28","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000127_800.png"}
+{"timestamp":"2026-03-30 00:01:28","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000127_800.txt"}
+{"timestamp":"2026-03-30 00:01:30","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:01:37","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000130_472.png"}
+{"timestamp":"2026-03-30 00:01:37","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000130_472.png"}
+{"timestamp":"2026-03-30 00:01:37","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000130_472.png"}
+{"timestamp":"2026-03-30 00:01:37","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000130_472.png"}
+{"timestamp":"2026-03-30 00:01:37","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000130_472.png"}
+{"timestamp":"2026-03-30 00:01:37","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000130_472.png"}
+{"timestamp":"2026-03-30 00:01:37","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000130_472.txt"}
+{"timestamp":"2026-03-30 00:01:39","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:01:45","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000139_284.png"}
+{"timestamp":"2026-03-30 00:01:45","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000139_284.png"}
+{"timestamp":"2026-03-30 00:01:45","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000139_284.png"}
+{"timestamp":"2026-03-30 00:01:45","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000139_284.png"}
+{"timestamp":"2026-03-30 00:01:45","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000139_284.png"}
+{"timestamp":"2026-03-30 00:01:45","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000139_284.png"}
+{"timestamp":"2026-03-30 00:01:45","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000139_284.txt"}
+{"timestamp":"2026-03-30 00:01:47","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:01:48","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000147_498.png"}
+{"timestamp":"2026-03-30 00:01:48","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000147_498.png"}
+{"timestamp":"2026-03-30 00:01:49","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000147_498.png"}
+{"timestamp":"2026-03-30 00:01:49","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000147_498.png"}
+{"timestamp":"2026-03-30 00:01:49","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000147_498.png"}
+{"timestamp":"2026-03-30 00:01:49","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000147_498.png"}
+{"timestamp":"2026-03-30 00:01:49","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000147_498.txt"}
+{"timestamp":"2026-03-30 00:01:50","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:01:51","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000150_531.png"}
+{"timestamp":"2026-03-30 00:01:51","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000150_531.png"}
+{"timestamp":"2026-03-30 00:01:51","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000150_531.png"}
+{"timestamp":"2026-03-30 00:01:51","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000150_531.png"}
+{"timestamp":"2026-03-30 00:01:51","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000150_531.png"}
+{"timestamp":"2026-03-30 00:01:51","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000150_531.png"}
+{"timestamp":"2026-03-30 00:01:51","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000150_531.txt"}
+{"timestamp":"2026-03-30 00:01:53","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:02:00","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000153_512.png"}
+{"timestamp":"2026-03-30 00:02:00","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000153_512.png"}
+{"timestamp":"2026-03-30 00:02:00","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000153_512.png"}
+{"timestamp":"2026-03-30 00:02:00","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000153_512.png"}
+{"timestamp":"2026-03-30 00:02:00","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000153_512.png"}
+{"timestamp":"2026-03-30 00:02:00","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000153_512.png"}
+{"timestamp":"2026-03-30 00:02:00","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000153_512.txt"}
+{"timestamp":"2026-03-30 00:02:02","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:02:10","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000202_222.png"}
+{"timestamp":"2026-03-30 00:02:10","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000202_222.png"}
+{"timestamp":"2026-03-30 00:02:11","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000202_222.png"}
+{"timestamp":"2026-03-30 00:02:11","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000202_222.png"}
+{"timestamp":"2026-03-30 00:02:11","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000202_222.png"}
+{"timestamp":"2026-03-30 00:02:11","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000202_222.png"}
+{"timestamp":"2026-03-30 00:02:11","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000202_222.txt"}
+{"timestamp":"2026-03-30 00:02:12","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:03:16","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:03:22","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000316_211.png"}
+{"timestamp":"2026-03-30 00:03:22","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000316_211.png"}
+{"timestamp":"2026-03-30 00:03:23","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000316_211.png"}
+{"timestamp":"2026-03-30 00:03:23","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000316_211.png"}
+{"timestamp":"2026-03-30 00:03:23","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000316_211.png"}
+{"timestamp":"2026-03-30 00:03:23","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000316_211.png"}
+{"timestamp":"2026-03-30 00:03:23","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000316_211.txt"}
+{"timestamp":"2026-03-30 00:03:24","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:03:27","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000324_995.png"}
+{"timestamp":"2026-03-30 00:03:27","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000324_995.png"}
+{"timestamp":"2026-03-30 00:03:27","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000324_995.png"}
+{"timestamp":"2026-03-30 00:03:27","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000324_995.png"}
+{"timestamp":"2026-03-30 00:03:27","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000324_995.png"}
+{"timestamp":"2026-03-30 00:03:27","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000324_995.png"}
+{"timestamp":"2026-03-30 00:03:27","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000324_995.txt"}
+{"timestamp":"2026-03-30 00:03:29","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:03:36","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000329_157.png"}
+{"timestamp":"2026-03-30 00:03:36","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000329_157.png"}
+{"timestamp":"2026-03-30 00:03:36","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000329_157.png"}
+{"timestamp":"2026-03-30 00:03:36","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000329_157.png"}
+{"timestamp":"2026-03-30 00:03:36","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000329_157.png"}
+{"timestamp":"2026-03-30 00:03:36","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000329_157.png"}
+{"timestamp":"2026-03-30 00:03:36","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000329_157.txt"}
+{"timestamp":"2026-03-30 00:03:37","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:03:39","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000337_841.png"}
+{"timestamp":"2026-03-30 00:03:39","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000337_841.png"}
+{"timestamp":"2026-03-30 00:03:39","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000337_841.png"}
+{"timestamp":"2026-03-30 00:03:39","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000337_841.png"}
+{"timestamp":"2026-03-30 00:03:39","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000337_841.png"}
+{"timestamp":"2026-03-30 00:03:39","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000337_841.png"}
+{"timestamp":"2026-03-30 00:03:39","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000337_841.txt"}
+{"timestamp":"2026-03-30 00:03:41","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:03:42","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000341_182.png"}
+{"timestamp":"2026-03-30 00:03:42","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000341_182.png"}
+{"timestamp":"2026-03-30 00:03:42","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000341_182.png"}
+{"timestamp":"2026-03-30 00:03:42","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000341_182.png"}
+{"timestamp":"2026-03-30 00:03:42","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000341_182.png"}
+{"timestamp":"2026-03-30 00:03:42","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000341_182.png"}
+{"timestamp":"2026-03-30 00:03:42","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000341_182.txt"}
+{"timestamp":"2026-03-30 00:03:43","type":"message","stage":"Watcher","detail":"Detected frontend payload file payload_1774809223270.txt","file":"../Storage_system/node_client/payload_1774809223270.txt"}
+{"timestamp":"2026-03-30 00:03:43","type":"message","stage":"Crypto","detail":"Wrapped payload \"tonight we will meet at dubai\" in 3 AES-256-GCM onion layers.","file":"payload_1774809223270.txt"}
+{"timestamp":"2026-03-30 00:03:43","type":"message","stage":"Layer 1","detail":"Relay 3 outer shell sealed","file":"payload_1774809223270.txt"}
+{"timestamp":"2026-03-30 00:03:43","type":"message","stage":"Layer 2","detail":"Relay 2 middle shell sealed","file":"payload_1774809223270.txt"}
+{"timestamp":"2026-03-30 00:03:43","type":"message","stage":"Layer 3","detail":"Relay 1 inner shell sealed","file":"payload_1774809223270.txt"}
+{"timestamp":"2026-03-30 00:03:50","type":"morphed","stage":"Stego","detail":"Encrypted onion hidden inside relay covers.","file":"../Storage_system/node_relay_1/morphed_relay1_20260330_000343_842.png"}
+{"timestamp":"2026-03-30 00:03:50","type":"morphed","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000343_842.png"}
+{"timestamp":"2026-03-30 00:03:51","type":"message","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000343_842.png"}
+{"timestamp":"2026-03-30 00:03:51","type":"message","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000343_842.png"}
+{"timestamp":"2026-03-30 00:03:51","type":"message","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000343_842.png"}
+{"timestamp":"2026-03-30 00:03:51","type":"message","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000343_842.png"}
+{"timestamp":"2026-03-30 00:03:51","type":"message","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/morphed_received_20260330_000343_842.txt"}
+{"timestamp":"2026-03-30 00:03:51","type":"message","stage":"Relay 1","detail":"Relay 1 receives a morphed PNG and peels the outer routing instruction.","file":""}
+{"timestamp":"2026-03-30 00:03:51","type":"message","stage":"Relay 2","detail":"Relay 2 forwards the still-encrypted core while traffic volume stays constant.","file":""}
+{"timestamp":"2026-03-30 00:03:51","type":"message","stage":"Client","detail":"Traffic Flow Confidentiality maintained with a constant 1.5s image cadence.","file":""}
+{"timestamp":"2026-03-30 00:03:52","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:03:58","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000352_680.png"}
+{"timestamp":"2026-03-30 00:03:58","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000352_680.png"}
+{"timestamp":"2026-03-30 00:03:58","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000352_680.png"}
+{"timestamp":"2026-03-30 00:03:58","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000352_680.png"}
+{"timestamp":"2026-03-30 00:03:58","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000352_680.png"}
+{"timestamp":"2026-03-30 00:03:58","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000352_680.png"}
+{"timestamp":"2026-03-30 00:03:58","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000352_680.txt"}
+{"timestamp":"2026-03-30 00:04:00","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:04:07","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000400_220.png"}
+{"timestamp":"2026-03-30 00:04:07","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000400_220.png"}
+{"timestamp":"2026-03-30 00:04:07","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000400_220.png"}
+{"timestamp":"2026-03-30 00:04:07","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000400_220.png"}
+{"timestamp":"2026-03-30 00:04:07","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000400_220.png"}
+{"timestamp":"2026-03-30 00:04:07","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000400_220.png"}
+{"timestamp":"2026-03-30 00:04:07","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000400_220.txt"}
+{"timestamp":"2026-03-30 00:04:09","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:04:10","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000409_200.png"}
+{"timestamp":"2026-03-30 00:04:10","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000409_200.png"}
+{"timestamp":"2026-03-30 00:04:10","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000409_200.png"}
+{"timestamp":"2026-03-30 00:04:10","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000409_200.png"}
+{"timestamp":"2026-03-30 00:04:10","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000409_200.png"}
+{"timestamp":"2026-03-30 00:04:10","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000409_200.png"}
+{"timestamp":"2026-03-30 00:04:10","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000409_200.txt"}
+{"timestamp":"2026-03-30 00:04:11","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:04:14","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000411_890.png"}
+{"timestamp":"2026-03-30 00:04:14","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000411_890.png"}
+{"timestamp":"2026-03-30 00:04:14","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000411_890.png"}
+{"timestamp":"2026-03-30 00:04:14","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000411_890.png"}
+{"timestamp":"2026-03-30 00:04:14","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000411_890.png"}
+{"timestamp":"2026-03-30 00:04:14","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000411_890.png"}
+{"timestamp":"2026-03-30 00:04:14","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000411_890.txt"}
+{"timestamp":"2026-03-30 00:04:15","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:04:23","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000415_692.png"}
+{"timestamp":"2026-03-30 00:04:23","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000415_692.png"}
+{"timestamp":"2026-03-30 00:04:23","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000415_692.png"}
+{"timestamp":"2026-03-30 00:04:23","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000415_692.png"}
+{"timestamp":"2026-03-30 00:04:23","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000415_692.png"}
+{"timestamp":"2026-03-30 00:04:23","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000415_692.png"}
+{"timestamp":"2026-03-30 00:04:23","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000415_692.txt"}
+{"timestamp":"2026-03-30 00:04:24","type":"message","stage":"Watcher","detail":"Detected frontend payload file payload_1774809257420.txt","file":"../Storage_system/node_client/payload_1774809257420.txt"}
+{"timestamp":"2026-03-30 00:04:24","type":"message","stage":"Crypto","detail":"Wrapped payload \"tommrow\" in 3 AES-256-GCM onion layers.","file":"payload_1774809257420.txt"}
+{"timestamp":"2026-03-30 00:04:24","type":"message","stage":"Layer 1","detail":"Relay 3 outer shell sealed","file":"payload_1774809257420.txt"}
+{"timestamp":"2026-03-30 00:04:24","type":"message","stage":"Layer 2","detail":"Relay 2 middle shell sealed","file":"payload_1774809257420.txt"}
+{"timestamp":"2026-03-30 00:04:24","type":"message","stage":"Layer 3","detail":"Relay 1 inner shell sealed","file":"payload_1774809257420.txt"}
+{"timestamp":"2026-03-30 00:04:31","type":"morphed","stage":"Stego","detail":"Encrypted onion hidden inside relay covers.","file":"../Storage_system/node_relay_1/morphed_relay1_20260330_000424_717.png"}
+{"timestamp":"2026-03-30 00:04:31","type":"morphed","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000424_717.png"}
+{"timestamp":"2026-03-30 00:04:32","type":"message","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000424_717.png"}
+{"timestamp":"2026-03-30 00:04:32","type":"message","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000424_717.png"}
+{"timestamp":"2026-03-30 00:04:32","type":"message","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000424_717.png"}
+{"timestamp":"2026-03-30 00:04:32","type":"message","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000424_717.png"}
+{"timestamp":"2026-03-30 00:04:32","type":"message","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/morphed_received_20260330_000424_717.txt"}
+{"timestamp":"2026-03-30 00:04:32","type":"message","stage":"Relay 1","detail":"Relay 1 receives a morphed PNG and peels the outer routing instruction.","file":""}
+{"timestamp":"2026-03-30 00:04:32","type":"message","stage":"Relay 2","detail":"Relay 2 forwards the still-encrypted core while traffic volume stays constant.","file":""}
+{"timestamp":"2026-03-30 00:04:32","type":"message","stage":"Client","detail":"Traffic Flow Confidentiality maintained with a constant 1.5s image cadence.","file":""}
+{"timestamp":"2026-03-30 00:04:33","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:04:39","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000433_757.png"}
+{"timestamp":"2026-03-30 00:04:39","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000433_757.png"}
+{"timestamp":"2026-03-30 00:04:40","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000433_757.png"}
+{"timestamp":"2026-03-30 00:04:40","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000433_757.png"}
+{"timestamp":"2026-03-30 00:04:40","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000433_757.png"}
+{"timestamp":"2026-03-30 00:04:40","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000433_757.png"}
+{"timestamp":"2026-03-30 00:04:40","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000433_757.txt"}
+{"timestamp":"2026-03-30 00:04:41","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:04:47","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000441_968.png"}
+{"timestamp":"2026-03-30 00:04:47","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000441_968.png"}
+{"timestamp":"2026-03-30 00:04:48","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000441_968.png"}
+{"timestamp":"2026-03-30 00:04:48","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000441_968.png"}
+{"timestamp":"2026-03-30 00:04:48","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000441_968.png"}
+{"timestamp":"2026-03-30 00:04:48","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000441_968.png"}
+{"timestamp":"2026-03-30 00:04:48","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000441_968.txt"}
+{"timestamp":"2026-03-30 00:04:49","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:04:57","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000449_701.png"}
+{"timestamp":"2026-03-30 00:04:57","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000449_701.png"}
+{"timestamp":"2026-03-30 00:04:57","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000449_701.png"}
+{"timestamp":"2026-03-30 00:04:57","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000449_701.png"}
+{"timestamp":"2026-03-30 00:04:57","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000449_701.png"}
+{"timestamp":"2026-03-30 00:04:57","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000449_701.png"}
+{"timestamp":"2026-03-30 00:04:57","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000449_701.txt"}
+{"timestamp":"2026-03-30 00:04:58","type":"message","stage":"Watcher","detail":"Detected frontend payload file payload_1774809296653.txt","file":"../Storage_system/node_client/payload_1774809296653.txt"}
+{"timestamp":"2026-03-30 00:04:58","type":"message","stage":"Crypto","detail":"Wrapped payload \"asdf\" in 3 AES-256-GCM onion layers.","file":"payload_1774809296653.txt"}
+{"timestamp":"2026-03-30 00:04:58","type":"message","stage":"Layer 1","detail":"Relay 3 outer shell sealed","file":"payload_1774809296653.txt"}
+{"timestamp":"2026-03-30 00:04:58","type":"message","stage":"Layer 2","detail":"Relay 2 middle shell sealed","file":"payload_1774809296653.txt"}
+{"timestamp":"2026-03-30 00:04:58","type":"message","stage":"Layer 3","detail":"Relay 1 inner shell sealed","file":"payload_1774809296653.txt"}
+{"timestamp":"2026-03-30 00:05:01","type":"morphed","stage":"Stego","detail":"Encrypted onion hidden inside relay covers.","file":"../Storage_system/node_relay_1/morphed_relay1_20260330_000458_701.png"}
+{"timestamp":"2026-03-30 00:05:01","type":"morphed","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000458_701.png"}
+{"timestamp":"2026-03-30 00:05:01","type":"message","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000458_701.png"}
+{"timestamp":"2026-03-30 00:05:01","type":"message","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000458_701.png"}
+{"timestamp":"2026-03-30 00:05:01","type":"message","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000458_701.png"}
+{"timestamp":"2026-03-30 00:05:01","type":"message","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/morphed_relay2_20260330_000458_701.png"}
+{"timestamp":"2026-03-30 00:05:01","type":"message","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/morphed_received_20260330_000458_701.txt"}
+{"timestamp":"2026-03-30 00:05:01","type":"message","stage":"Relay 1","detail":"Relay 1 receives a morphed PNG and peels the outer routing instruction.","file":""}
+{"timestamp":"2026-03-30 00:05:01","type":"message","stage":"Relay 2","detail":"Relay 2 forwards the still-encrypted core while traffic volume stays constant.","file":""}
+{"timestamp":"2026-03-30 00:05:01","type":"message","stage":"Client","detail":"Traffic Flow Confidentiality maintained with a constant 1.5s image cadence.","file":""}
+{"timestamp":"2026-03-30 00:05:02","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:05:03","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000502_716.png"}
+{"timestamp":"2026-03-30 00:05:03","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000502_716.png"}
+{"timestamp":"2026-03-30 00:05:03","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000502_716.png"}
+{"timestamp":"2026-03-30 00:05:03","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000502_716.png"}
+{"timestamp":"2026-03-30 00:05:03","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000502_716.png"}
+{"timestamp":"2026-03-30 00:05:03","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000502_716.png"}
+{"timestamp":"2026-03-30 00:05:03","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000502_716.txt"}
+{"timestamp":"2026-03-30 00:05:05","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:05:06","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000505_498.png"}
+{"timestamp":"2026-03-30 00:05:06","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000505_498.png"}
+{"timestamp":"2026-03-30 00:05:06","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000505_498.png"}
+{"timestamp":"2026-03-30 00:05:06","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000505_498.png"}
+{"timestamp":"2026-03-30 00:05:06","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000505_498.png"}
+{"timestamp":"2026-03-30 00:05:06","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000505_498.png"}
+{"timestamp":"2026-03-30 00:05:06","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000505_498.txt"}
+{"timestamp":"2026-03-30 00:05:08","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:05:15","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000508_187.png"}
+{"timestamp":"2026-03-30 00:05:15","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000508_187.png"}
+{"timestamp":"2026-03-30 00:05:16","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000508_187.png"}
+{"timestamp":"2026-03-30 00:05:16","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000508_187.png"}
+{"timestamp":"2026-03-30 00:05:16","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000508_187.png"}
+{"timestamp":"2026-03-30 00:05:16","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000508_187.png"}
+{"timestamp":"2026-03-30 00:05:16","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000508_187.txt"}
+{"timestamp":"2026-03-30 00:05:17","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}
+{"timestamp":"2026-03-30 00:05:24","type":"chaff","stage":"Stego","detail":"Dummy PNGs emitted to preserve traffic flow confidentiality.","file":"../Storage_system/node_relay_1/chaff_relay1_20260330_000517_570.png"}
+{"timestamp":"2026-03-30 00:05:24","type":"chaff","stage":"Stego","detail":"Second relay image morphed for downstream forwarding.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000517_570.png"}
+{"timestamp":"2026-03-30 00:05:25","type":"chaff","stage":"Receiver","detail":"Receiver extracted the embedded onion payload from the relay PNG.","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000517_570.png"}
+{"timestamp":"2026-03-30 00:05:25","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 1","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000517_570.png"}
+{"timestamp":"2026-03-30 00:05:25","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 2","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000517_570.png"}
+{"timestamp":"2026-03-30 00:05:25","type":"chaff","stage":"Receiver","detail":"Receiver peeled layer 3","file":"../Storage_system/node_relay_2/chaff_relay2_20260330_000517_570.png"}
+{"timestamp":"2026-03-30 00:05:25","type":"chaff","stage":"Receiver","detail":"Recovered plaintext written for the receiving node.","file":"../Storage_system/node_receiver/chaff_received_20260330_000517_570.txt"}
+{"timestamp":"2026-03-30 00:05:26","type":"chaff","stage":"Heartbeat","detail":"No user payload found. Emitting dummy relay traffic.","file":""}

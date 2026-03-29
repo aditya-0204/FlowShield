@@ -120,6 +120,7 @@ function App() {
   const [receiverState, setReceiverState] = useState(null)
   const [receiverMessageState, setReceiverMessageState] = useState(null)
   const [receiverChaffState, setReceiverChaffState] = useState(null)
+  const [deliveredMessage, setDeliveredMessage] = useState(null)
   const [sessionInfo, setSessionInfo] = useState(null)
   const [status, setStatus] = useState('Bridge idle. Waiting for a payload or the next heartbeat.')
   const [lastBridgeSyncAt, setLastBridgeSyncAt] = useState(null)
@@ -262,8 +263,8 @@ function App() {
   const senderPipelineFinished = targetStepState.receiver.active && visibleStepCount >= pipelineStages.length
   const hasActiveRealSession = Boolean(sessionInfo?.message)
   const receiverCanRevealMessage = hasActiveRealSession ? Boolean(sessionInfo?.revealReady) : true
-  const latestRealMessage = receiverMessageState?.plaintext || 'No real payload has been received yet.'
-  const latestRealFile = receiverMessageState?.fileName || ''
+  const latestRealMessage = deliveredMessage?.plaintext || 'No real payload has been received yet.'
+  const latestRealFile = deliveredMessage?.fileName || ''
   const latestChaffMessage = receiverChaffState?.plaintext || 'No chaff heartbeat visible yet.'
   const latestChaffFile = receiverChaffState?.fileName || ''
   const receiverHasCurrentPayload =
@@ -272,8 +273,8 @@ function App() {
   const heartbeatBoxMessage =
     hasActiveRealSession && !receiverCanRevealMessage
       ? receiverHasCurrentPayload
-        ? receiverMessageState?.plaintext || 'Receiver has not decrypted the active payload yet.'
-        : 'Receiver has not decrypted the active payload yet.'
+        ? receiverMessageState?.plaintext || 'Receiver is decrypting the active payload...'
+        : 'Receiver is waiting to decrypt the active payload...'
       : latestChaffMessage
   const heartbeatBoxMeta =
     hasActiveRealSession && !receiverCanRevealMessage
@@ -311,6 +312,16 @@ function App() {
 
     return () => window.clearTimeout(timeoutId)
   }, [completedLayerCount, stepState.crypto.active, visibleLayerCount])
+
+  // Promote a real message to the delivered slot only when synchronized reveal is allowed.
+  useEffect(() => {
+    if (!receiverCanRevealMessage) {
+      return
+    }
+    if (receiverMessageState?.plaintext && receiverMessageState?.fileName) {
+      setDeliveredMessage(receiverMessageState)
+    }
+  }, [receiverCanRevealMessage, receiverMessageState])
 
   if (viewMode === 'receiver') {
     return (

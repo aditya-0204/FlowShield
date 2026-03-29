@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <filesystem>
 #include <iostream>
+#include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -27,11 +28,11 @@ public:
             return false;
         }
 
-        embedPayload(image, payload);
-
         if (morphImage) {
             applyMorph(image);
         }
+
+        embedPayload(image, payload);
 
         fs::create_directories(fs::path(outputPath).parent_path());
         error = lodepng::encode(outputPath, image, width, height);
@@ -41,6 +42,60 @@ public:
         }
 
         return true;
+    }
+
+    static vector<unsigned char> extractOnion(const string& inputPath) {
+        vector<unsigned char> image;
+        unsigned width = 0;
+        unsigned height = 0;
+
+        unsigned error = lodepng::decode(image, width, height, inputPath);
+        if (error != 0) {
+            throw runtime_error("Failed to load stego image for extraction: " + inputPath);
+        }
+
+        vector<unsigned char> payload;
+        payload.reserve(usableChannels(image) / 8);
+
+        size_t channelIndex = 0;
+        size_t bytesToRead = 0;
+        bool haveLength = false;
+
+        while (channelIndex < image.size()) {
+            unsigned char byte = 0;
+
+            for (int bit = 7; bit >= 0; --bit) {
+                while (channelIndex < image.size() && (channelIndex % 4) == 3) {
+                    ++channelIndex;
+                }
+
+                if (channelIndex >= image.size()) {
+                    throw runtime_error("Unexpected end of image while extracting the stego payload.");
+                }
+
+                byte |= static_cast<unsigned char>((image[channelIndex] & 0x01) << bit);
+                ++channelIndex;
+            }
+
+            payload.push_back(byte);
+
+            if (!haveLength && payload.size() == 4) {
+                bytesToRead =
+                    (static_cast<size_t>(payload[0]) << 24) |
+                    (static_cast<size_t>(payload[1]) << 16) |
+                    (static_cast<size_t>(payload[2]) << 8) |
+                    static_cast<size_t>(payload[3]);
+                payload.clear();
+                payload.reserve(bytesToRead);
+                haveLength = true;
+            }
+
+            if (haveLength && payload.size() == bytesToRead) {
+                return payload;
+            }
+        }
+
+        throw runtime_error("Stego payload extraction failed before reaching the declared payload size.");
     }
 
 private:

@@ -116,6 +116,10 @@ private:
 
         logEvent(relay1Ok ? prefix : "error", "Stego", detail, relay1Output.string());
         logEvent(relay2Ok ? prefix : "error", "Stego", "Second relay image morphed for downstream forwarding.", relay2Output.string());
+
+        if (relay2Ok) {
+            receivePayload(relay2Output, prefix, stamp);
+        }
     }
 
     fs::path pickCoverImage(const string& avoid = "") {
@@ -149,8 +153,28 @@ private:
         fs::create_directories(watchPath);
         fs::create_directories(FlowShield::RELAY_1_PATH);
         fs::create_directories(FlowShield::RELAY_2_PATH);
+        fs::create_directories(FlowShield::RECEIVER_PATH);
         ofstream touchLog(FlowShield::TRAFFIC_LOG_PATH, ios::app);
         touchLog.close();
+    }
+
+    void receivePayload(const fs::path& relayImage, const string& prefix, const string& stamp) {
+        vector<unsigned char> extracted = StegoEngine::extractOnion(relayImage.string());
+        logEvent(prefix == "chaff" ? "chaff" : "message", "Receiver", "Receiver extracted the embedded onion payload from the relay PNG.", relayImage.string());
+
+        vector<string> trace;
+        string plaintext = CryptoEngine::decryptThreeLayerOnion(extracted, trace);
+
+        for (const string& step : trace) {
+            logEvent(prefix == "chaff" ? "chaff" : "message", "Receiver", step, relayImage.string());
+        }
+
+        fs::path outputFile = fs::path(FlowShield::RECEIVER_PATH) / (prefix + "_received_" + stamp + ".txt");
+        ofstream out(outputFile);
+        out << plaintext;
+        out.close();
+
+        logEvent(prefix == "chaff" ? "chaff" : "message", "Receiver", "Recovered plaintext written for the receiving node.", outputFile.string());
     }
 
     string timestampForFile() {

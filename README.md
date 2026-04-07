@@ -1,112 +1,173 @@
-# FlowShield Frontend
+# FlowShield
 
-FlowShield is a React + Vite dashboard for demonstrating an asynchronous steganographic onion-routing pipeline. This frontend lets a sender queue plaintext, visualizes each step of the route, polls the bridge service for live traffic updates, and exposes a dedicated receiver view for synchronized message reveal.
+FlowShield is an asynchronous steganographic onion router demo. It combines a C++ backend, a React dashboard, and lightweight Node.js bridge services to show how plaintext can be wrapped in multiple encryption layers, hidden inside PNG images, forwarded through relay folders, and recovered at the receiver while background chaff traffic keeps the channel noisy.
 
-## What This Frontend Does
+## Overview
 
-- Sends plaintext messages to the local bridge API.
-- Visualizes the route from `node_client` to `node_receiver`.
-- Displays message events and chaff heartbeat traffic from `traffic_log.jsonl`.
-- Shows onion-layer progress for a 3-layer AES-256-GCM flow.
-- Includes a receiver mode for monitoring decrypted outputs.
+- React frontend for sender and receiver dashboards
+- Node.js bridge API for message staging and traffic polling
+- Node.js receiver service for remote relay delivery
+- C++ engine for file watching, encryption, steganography, and recovery
+- Shared storage directories that simulate the route between client, relays, and receiver
 
-## Project Structure
+## Architecture
 
 ```text
-Frontend/Frontend/
-|-- src/
-|   |-- App.jsx               # Sender + receiver dashboard UI
-|   |-- main.jsx              # React entry point
-|   |-- App.css
-|   `-- index.css
-|-- bridge.js                 # Express bridge API on port 5050
-|-- receiver-server.js        # Receiver service for remote PNG delivery
-|-- receiver-dashboard.html   # Minimal HTML page for receiver server
-|-- package.json
+Sender UI
+  -> Frontend bridge API (`Frontend/Frontend/bridge.js`)
+  -> `Storage_system/node_client`
+  -> C++ FlowShield engine (`Backend/flowshield.exe`)
+  -> `Storage_system/node_relay_1`
+  -> `Storage_system/node_relay_2`
+  -> receiver service (`Frontend/Frontend/receiver-server.js`) or local receiver flow
+  -> `Storage_system/node_receiver`
+  -> frontend receiver view
+```
+
+## Repository Structure
+
+```text
+Flowshield/
+|-- Backend/
+|   |-- Source/              # C++ engine sources
+|   |-- Include/             # constants and headers
+|   |-- assets/covers/       # PNG cover-image pool
+|   `-- flowshield.exe       # compiled backend executable
+|-- Frontend/Frontend/
+|   |-- src/                 # React app
+|   |-- bridge.js            # bridge API service
+|   |-- receiver-server.js   # receiver service
+|   `-- package.json
+|-- Storage_system/
+|   |-- node_client/
+|   |-- node_relay_1/
+|   |-- node_relay_2/
+|   |-- node_receiver/
+|   `-- traffic_log.jsonl
+|-- image.png
+|-- image-1.png
 `-- README.md
 ```
 
-This frontend also reads and writes files in the shared `Storage_system` folder:
+## Core Flow
 
-- `Storage_system/node_client`
-- `Storage_system/node_relay_1`
-- `Storage_system/node_relay_2`
-- `Storage_system/node_receiver`
-- `Storage_system/traffic_log.jsonl`
+1. The sender types a plaintext message into the React dashboard.
+2. The bridge writes a `payload_<timestamp>.txt` file into `Storage_system/node_client`.
+3. The C++ engine watches that folder and starts processing the payload.
+4. The message is wrapped in 3 onion layers and hidden inside morphed PNG relay files.
+5. Relay output moves through `node_relay_1` and `node_relay_2`.
+6. The receiver service or local receiver mode extracts and decrypts the final payload.
+7. The frontend polls the bridge every 1500 ms to animate the route and show logs.
+
+## Tech Stack
+
+- Frontend: React 19, Vite, Tailwind-based styling
+- Bridge services: Node.js, Express, CORS
+- Backend engine: C++
+- Data flow: filesystem-based relay simulation plus optional HTTP receiver forwarding
 
 ## Prerequisites
 
-- Node.js 18+ recommended
+- Node.js 18 or newer
 - npm
-- The FlowShield backend executable available at `Backend/flowshield.exe` for full receiver processing
+- Windows-compatible `Backend/flowshield.exe` for the full backend flow
 
-## Available Scripts
+## Running Locally
 
-- `npm run dev` starts the Vite frontend
-- `npm run build` builds the production bundle
-- `npm run preview` previews the production build
-- `npm run lint` runs ESLint
-- `npm run bridge` starts the local bridge API on port `5050`
-- `npm run receiver` starts the receiver server on port `6060` by default
+Open separate terminals as needed.
 
-## Local Development
+### 1. Start The Bridge
 
-Run these commands from `Frontend/Frontend` in separate terminals:
+From `Frontend/Frontend`:
 
 ```bash
 npm install
 npm run bridge
+```
+
+This starts the bridge API using the default port currently configured in the project.
+
+### 2. Start The Frontend
+
+From `Frontend/Frontend`:
+
+```bash
 npm run dev
 ```
 
-Then open the Vite app in your browser. The UI talks to:
+### 3. Start The Receiver Service
 
-- `http://localhost:5050/api/message`
-- `http://localhost:5050/api/traffic`
-- `http://localhost:5050/api/receiver/latest`
-- `http://localhost:5050/api/session`
-
-## Receiver Mode
-
-To simulate or host the receiver side, run:
+From `Frontend/Frontend`:
 
 ```bash
 npm run receiver
 ```
 
-The receiver service:
+This starts the receiver service using its configured default port.
 
-- accepts relay-2 PNG files over HTTP
-- saves them into `Storage_system/remote_receiver_inbox`
-- invokes `Backend/flowshield.exe`
-- exposes status endpoints such as `/api/health` and `/api/latest`
+### 4. Start The Backend Engine
 
-If you want the bridge to forward relay-2 images to a remote receiver, set:
+From `Backend`:
 
 ```bash
-FLOWSHIELD_RECEIVER_URL=http://<receiver-host>:6060/api/receive-stego
+./flowshield.exe
 ```
 
-## Flow Overview
+The backend watches `Storage_system/node_client` and processes new payload files.
 
-1. The sender enters plaintext in the React UI.
-2. `bridge.js` writes a `payload_<timestamp>.txt` file into `Storage_system/node_client`.
-3. The backend watcher picks up the payload and wraps it in 3 onion-encrypted layers.
-4. The encrypted payload is hidden inside relay PNGs in `node_relay_1` and `node_relay_2`.
-5. The receiver extracts and decrypts the payload into `node_receiver`.
-6. The frontend polls the bridge every 1.5 seconds to animate the pipeline and update the receiver view.
+## Frontend Scripts
 
-## Screeshots 
+From `Frontend/Frontend`:
+
+- `npm run dev` starts the Vite app
+- `npm run build` builds the frontend
+- `npm run preview` previews the production build
+- `npm run lint` runs ESLint
+- `npm run bridge` starts the bridge API
+- `npm run receiver` starts the receiver server
+
+## Service Configuration
+
+- The bridge service port is defined in `Frontend/Frontend/bridge.js`.
+- The receiver service port is defined in `Frontend/Frontend/receiver-server.js`.
+- The frontend uses the current browser hostname together with the bridge configuration.
+- If you change ports, update the related service and client settings together.
+
+## Important Paths
+
+- `Storage_system/node_client` stores sender payload files
+- `Storage_system/node_relay_1` stores first relay PNG outputs
+- `Storage_system/node_relay_2` stores second relay PNG outputs
+- `Storage_system/node_receiver` stores recovered plaintext
+- `Storage_system/traffic_log.jsonl` stores recent event history
+
+## Receiver Forwarding
+
+To forward relay-2 images to another machine, set this environment variable before starting the bridge:
+
+```bash
+FLOWSHIELD_RECEIVER_URL=http://<receiver-host>:<receiver-port>/api/receive-stego
+```
+
+If this variable is not set, the bridge stays in local-only mode.
+
+## Notes
+
+- The backend constants currently use a `1500 ms` heartbeat interval.
+- The default demo message in the backend constants is `Hi Aditya`.
+- The receiver service expects the backend executable at `Backend/flowshield.exe`.
+- The bridge and UI derive their behavior from the shared `Storage_system` folders, so those directories should remain available.
+
+## Screenshots
 
 ### Dashboard Overview
 
 ![FlowShield dashboard overview](Frontend/Frontend/image.png)
 
-### Additional Screenshots
+### Pipeline Visualization
 
-Add the remaining two screenshots to the repository and reference them here, for example:
+![FlowShield sender to receiver pipeline](image.png)
 
-```md
-![FlowShield pipeline view](docs/screenshots/pipeline-view.png)
-![FlowShield traffic log view](docs/screenshots/traffic-log-view.png)
-```
+### Payload Transformation And Traffic Log
+
+![FlowShield payload transformation and traffic log](image-1.png)

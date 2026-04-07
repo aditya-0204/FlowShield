@@ -96,13 +96,17 @@ FLOWSHIELD_RECEIVER_URL=http://<receiver-host>:6060/api/receive-stego
 5. The receiver extracts and decrypts the payload into `node_receiver`.
 6. The frontend polls the bridge every 1.5 seconds to animate the pipeline and update the receiver view.
 
-## Notes
-
-- The frontend assumes the bridge is reachable on port `5050`.
-- The API base is derived from the current browser hostname, so the UI can work on LAN-accessible demos.
-- Chaff heartbeat traffic is displayed alongside real payload events to illustrate constant-rate cover traffic.
-- If `Backend/flowshield.exe` is missing, the receiver server can start, but receiver-side extraction will fail.
-
-
 ## Screeshots 
-![alt text](image.png)
+
+### Dashboard Overview
+
+![FlowShield dashboard overview](Frontend/Frontend/image.png)
+
+### Additional Screenshots
+
+Add the remaining two screenshots to the repository and reference them here, for example:
+
+```md
+![FlowShield pipeline view](docs/screenshots/pipeline-view.png)
+![FlowShield traffic log view](docs/screenshots/traffic-log-view.png)
+```

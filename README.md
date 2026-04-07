@@ -166,8 +166,8 @@ If this variable is not set, the bridge stays in local-only mode.
 
 ### Pipeline Visualization
 
-![FlowShield sender to receiver pipeline](image.png)
+![FlowShield sender to receiver pipeline](Frontend/Frontend/image1.png)
 
 ### Payload Transformation And Traffic Log
 
-![FlowShield payload transformation and traffic log](image-1.png)
+![FlowShield payload transformation and traffic log](Frontend/Frontend/image1.png)

@@ -170,4 +170,4 @@ If this variable is not set, the bridge stays in local-only mode.
 
 ### Payload Transformation And Traffic Log
 
-![FlowShield payload transformation and traffic log](Frontend/Frontend/image1.png)
+![FlowShield payload transformation and traffic log](Frontend/Frontend/image-1.png)
